@@ -1,0 +1,240 @@
+
+
+
+\section{A Single Submanifold: $B=A\times\{q\}$}
+\TOX{See \cite{itoh2001lipschitz} for potential exposition.}
+
+
+We now consider the variational problem dealing with minimizing geodesics connecting a submanifold to a single a point.  To this end, let $(M,g)$ be a complete Riemannian manifold.  Suppose $A\subset M$ is an immersed submanifold.  Then $(A,g)$ can be treated as a Riemannian submanifold of $(M,g)$, where we denote the induced metric on $A$ identically, as it's the pullback of $g$ via the inclusion, that is, $i:A\hookrightarrow M$ and $g=i^*g$ (and $i$ is an isometric immersion).  Let $q\in M\setminus A$, and let
+$$B=A\times\{q\}\subset M\times M,$$
+be our boundary condition in this setting.  Then $\mathcal{C}(B)$ is the space of all piecewise regular curves $\gamma:[a,b]\to M$ with $\gamma(a)\in A$ and $\gamma(b)=q$.  Moreover, any variation field $V\in T_\gamma\mathcal{C}(B)$ satisfies $V(a)\in T_{\gamma(a)}A$ and $V(b)=0$.  In this setting, our $B$-geodesics are the geodesics $\gamma$ which are normal to $A$, that is,
+$$\gamma'(a)\in T_{\gamma(a)}A^\perp.$$
+
+Our variation formulas then simplify as follows.
+
+\begin{thm}[First Variation of Energy]
+    	Let $\gamma\in\mathcal{C}(B)$ and $V\in T_\gamma\mathcal{C}(B)$ with associated variation $\Gamma:I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+    	\begin{align*}
+    		\hat{E}'(s)&=-\int_a^bg(\partial_s\Gamma,D_t\partial_t\Gamma)dt+\sum_{j=1}^{k-1}g(\partial_s\Gamma(s,t_j),\Delta\partial_t\Gamma(s,t_j))\\
+    		&\qquad\qquad-g(\partial_s\Gamma(s,a),\partial_t\Gamma(s,a)).
+    	\end{align*}
+    	
+    	In particular, when $s=0$,
+	\begin{align*}
+		dE_\gamma(V)&=-\int_a^bg(V(t),D_t\gamma'(t))dt+\sum_{j=1}^{k-1}g(V(t_j),\Delta\gamma'(t_j))\\
+  	\end{align*}
+\end{thm}
+
+\begin{thm}[Second Variation of Energy]
+	Let $\gamma\in\mathcal{C}(B)$ be a $B$-geodesic and $V,W\in T_\gamma\mathcal{C}(B)$ with associated two-parameter variation $\Gamma:I_\epsilon\times I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+	\begin{align*}
+		\hess(E)_\gamma(V,W)&=\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt\\
+		&\qquad +g(S_{\gamma'(a)}(V(a)),(W(a)),
+	\end{align*}
+	or alternatively,
+	\begin{align*}
+		&\hess(E)_\gamma(V,W)=-\int_a^b(g(D_t^2V+R_{V\gamma'}\gamma',W)dt\\
+		&\qquad +g(S_{\gamma'(a)}(V(a))-D_tV(a),W(a))\\
+		&\qquad\qquad +\sum_{j=1}^{k-1}g(\Delta(D_tV)(t_j),W(t_j)),
+	\end{align*}
+	where $S$ denotes the shape operator of the submanifold $A\subset M$ with respect to the normal vector $\gamma'(a)$, that is, given a normal vector $\xi\in T_xA^\perp$ and vectors $X,Y\in T_xA$, we have that
+	$$g(S_\xi(X),Y)=-g(\two(X,Y),\xi).$$
+\end{thm}
+
+
+
+\subsection{$A$-Jacobi Fields}
+
+Let $(M,g)$ be an $n$-dimensional, complete Riemannian manifold with $k$-dimensional, Riemannian submanifold $A\subset M$ with shape operator $S$, and boundary condition $B=A\times\{q\}$.  Suppose $\gamma\in\mathcal{C}(B)$ is a $B$-geodesic.  Then a Jacobi field $J\in\vf{\gamma}$ is called an \textit{$A$-Jacobi field} if $J$ satisfies the initial conditions
+$$J(a)\in T_{\gamma(a)}A,\qquad D_tJ(a)-S_{\gamma'(a)}(J(a))\in T_{\gamma(a)}A^\perp.$$
+
+Notice that since the first initial condition is a restriction that $(n-k)$ equations be $0$, and the second initial condition is a restriction that $k$ equations be zero, the space of all $A$-Jacobi equations along $\gamma$, denoted by $\frak{J}^A(\gamma)$ is $n$-dimensional.
+
+Let $NA$ denote the normal bundle of $A$ in $\rest{TM}_A$.  That is,
+$$\rest{TM}_A=TA\oplus NA$$
+as a Whitney sum, and let $\exp^\perp:\mathcal{D}\subset NA\to M$ denote the restriction of the exponential map $\exp:TM\to M$.
+
+\begin{thm}
+    Let $(x,\xi)\in NA$ and $\gamma=\gamma_{x,\xi}:[0,b]\to M$ be a geodesic segment normal to $A$, and let $J\in\vf{\gamma}$.  Then $J$ is an $A$-Jacobi field if and only if $J$ is the variation field for a smooth variation $\Gamma:I_\epsilon\times[0,b]\to M$ such that each curve $\Gamma(s,\cdot)$ is a geodesic normal to $A$ at $t=0$.  
+\end{thm}
+
+\begin{proof}
+Suppose $J(t)=\partial_s\Gamma(0,t)$ is the variation field for such a variation $\Gamma$.  Then as before $J$ is a Jacobi field.  Moreover, by assumption we have that $\Gamma(s,0)\in A$ for all $s\in I_\epsilon$, hence $J(0)=\partial_s\Gamma(0,0)\in T_xA$.  Let $\xi(s)=\partial_t\Gamma(s,0)$.  Then $\xi=\xi(0)$, and
+\begin{align*}
+	D_tJ(0)&=D_t\partial_s\Gamma(0,0)\\
+	&=D_s\partial_t\Gamma(0,0)\\
+	&=\rest{\tan(\nabla_{J(0)}\xi(s)}_{s=0}+\rest{\nor{\nabla_{J(0)}\xi(s)}}_{s=0}\\
+	&=S_{\xi}(J(0))+\rest{\nor{\nabla_{J(0)}\xi(s)}}_{s=0}.
+\end{align*}
+That is, $D_tJ(0)-S_\xi(J(0))\in T_xA^\perp,$ and $J$ is an $A$-Jacobi field.
+
+Conversely, suppose $J$ is an $A$-Jacobi field.  Let 
+$$\eta=(J(0),D_tJ(0)-S_\xi(J(0)))\in T_xA\oplus T_xA^\perp=T_\xi(NA).$$
+Take a curve $s\mapsto\xi(s)\in NA$ such that $\xi(0)=\xi$ and $\xi'(0)=\eta$.  Define the variation
+$$\Gamma(s,t)=\exp^\perp(t\xi(s)).$$
+Clearly, $\Gamma(0,t)=\exp^\perp(t\xi)=\exp_x(t\xi)=\gamma(t)$, so this is a normal geodesic variation of $\gamma$.  Finally, let $\alpha(s)=\pi(\xi(s))$, and we see that the variation field $V(t)$ is a Jacobi field satisfying the initial conditions
+\begin{align*}
+	Y(0)&=\partial_s\Gamma(0,0)\\
+	&=\alpha'(0)=d\pi_\xi(\eta)\\
+	&=J(0),
+\end{align*}
+and
+\begin{align*}
+	D_tY(0)&=D_s\partial_t\Gamma(0,0)\\
+	&=\rest{\tan(\nabla_{Y(0)}\xi(s))}_{s=0}+\rest{\nor{\nabla_{Y(0)}\xi(0)}}_{s=0}\\
+	&=\rest{\tan(\nabla_{J(0)}\xi(s))}_{s=0}+\rest{\nor{\nabla_{J(0)}\xi(0)}}_{s=0}\\
+	&=S_\xi(J(0))+K^\perp\xi'(0)\\
+	&=S_\xi(J(0))+D_tJ(0)-S_\xi(J(0))\\
+	&=D_tJ(0),
+\end{align*}
+thus showing that $Y\equiv J$.
+\end{proof}
+
+\begin{cor}
+    $J$ is an $A$-Jacobi field along $\gamma_\xi$ if and only if there exists $(X,Y)\in T_\xi NA$ such that
+    $$J(t)=d(\exp^\perp)_{t\xi}(X,tY),$$
+    where
+    $$X=J(0),\qquad Y=D_tJ(0)-S_\xi(J(0)).$$
+\end{cor}
+
+\begin{proof}
+\HOX{Fill in this proof.}
+\end{proof}
+
+
+
+\subsubsection{Focal Points}
+
+For $\gamma=\gamma_\xi:[0,b]\to M$ a normal geodesic to $A$, if there exists a nontrivial $A$-Jacobi field $J$ along $\gamma$ for which $J(t_0)=0$, $t_0>0$, we call $\gamma(t_0)=\exp^\perp(t_0\xi)$ a \textit{focal point} of $A$ along $\gamma$.
+
+\begin{prop}
+    Let $\gamma_{x,\xi}$ be a normal geodesic to $A$.  Then $\gamma_{x,\xi}(t_0)$ is a focal point of $A$ if and only if $d(\exp^\perp)_{t_0\xi}$ is degenerate.
+\end{prop}
+
+\begin{proof}
+Proof should be similar to \cref{thm:conjugateJacobi}, but requirers more care since $\exp^\perp$ has the critical point at $(x,\xi)$, and hence we need a better way to identify $T_{(x,\xi)}(NA)$.
+
+\HOX{Figure out proof.}
+\end{proof}
+
+
+\begin{cor}
+    Let $\gamma_{x,\xi}:[0,b]\to M$ be a nontrivial normal geodesic to $A$.  If $\gamma(b)$ is not a focal point of $A$, then for any $\eta\in T_{\gamma(b)}M$ there exists a unique $A$-Jacobi field $J$ along $\gamma$ with $J(b)=\eta$.
+\end{cor}
+
+\begin{proof}
+Should follow after understanding the previous proposition better.
+\end{proof}
+
+
+\begin{lem}[Gauss Lemma]
+    Let $\xi\in T_xA^\perp$ and under the usual identification let $(X,Y)\in T_\xi NA$.  Then we may identify $(0,\xi)\in T_\xi (T_xA^\perp)$ with $\xi$ via the isomorphism $k:T_xA^\perp\to T_\xi (T_xA^\perp)$.  Then
+    \begin{enumerate}[i.]
+    	\item $$d(\exp^\perp)_{t\xi}(0,t\xi)=t\gamma'_\xi(t),$$
+    		and in particular
+    		$$|d(\exp^\perp)_\xi(0,\xi)|_g=|\xi|_g,$$
+    	\item $$g(d(\exp^\perp)_{t\xi}(X,tY),\gamma'_\xi(t))=tg(Y,\xi).$$
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}
+Should follow after understanding the previous proposition better.  Also see Kling Lemma 1.12.17 p. 121
+\end{proof}
+
+
+
+
+
+\subsection{$A$-Cut Points}
+
+Let $(M,g)$ be an $n$-dimensional, complete Riemannian manifold with $k$-dimensional, compact (and hence embedded) Riemannian submanifold $A\subset M$ with shape operator $S$.  Let $NA$ denote the normal bundle of $A$ in $\rest{TM}_A$, and let $N^1A=\rest{SM}_A\cap NA$ the unit-normal bundle of $A$ in $NA$.
+
+\begin{lem}
+    For any $y\in M$, there exists $(x,\xi)\in N^1A$ such that
+    $$y=\gamma_{x,\xi}(s),$$
+    where
+    $$s=\dist_g(x,y)=\dist_g(A,y).$$
+\end{lem}
+
+\begin{proof}
+Letting $r(x)=\dist_g(x,y)$, we have that $r$ is continuous on $M$.  Moreover, as $M$ is complete, $r(x)<\infty$, and since $A$ is compact, we have that
+$$s=\min_{x\in A}r(x),$$
+attains its minimum at some $x\in A$.  Hence
+$$y=\gamma_{x,\xi}(s),$$
+for some $\xi\in S_xM$.
+
+Consider the boundary condition $B=A\times\{y\}\subset M\times M$.  Then $\gamma\in\mathcal{C}([0,s];B)$ is a $B$-geodesic, and by our first variation formula \cref{thm:firstVarEnergy}, for any $X\in T_xA$, let $V\in T_\gamma\mathcal{C}(B)$ be such that $V(0)=X$, we have that
+\begin{align*}
+	0&=dE_{\gamma_{x,\xi}}(V)\\
+	&=-g(V(0),\gamma'_{x,\xi}(0))\\
+	&=-g(X,\xi),
+\end{align*}
+and hence $\xi\in N_xA$ as desired.
+\end{proof}
+
+Since $A$ is compact by the Tubular Neighborhood Theorem\footnote{Cf. Vector Bundle Notes} there exists $\rho>0$ such that
+$$\exp^\perp:V^\rho\to A^\rho,$$
+is a diffeomorphism, where
+$$V^\rho=\{\xi\in NA:|\xi|_g<\rho\},$$
+and $A^\rho=\exp^\perp(V^\rho)$ is an open neighborhood of $A$ in $M$.  In particular, if $y\in A^\rho$, then there exists a unique $(x,\xi)\in N^1A$ such that
+$$\exp^\perp(x,s\xi)=y,$$
+for $s<\rho$.
+
+Although $\gamma_{x,\xi}([0,s])$ is the unique shortest geodesic to $A$ when $s$ is small, it fails to be so when $s$ is large.  This leads to defining our critical distance function for our normal exponential map.  That is, \textit{$A$-cut locus distance function} $\tau_A:N^1A\to\R$,
+$$\tau_A(x,\xi)=\max\{s>0:\dist_g(\gamma_{x,\xi}(s),A)=s\}.$$
+Since $A$ is compact, $\tau_A(x,\xi)<\infty$ for any $(x,\xi)\in N^1A$.
+
+We define the \textit{$A$-cut locus}
+$$\cut(A)=\{y\in M:y=\gamma_{x,\xi}(\tau_A(x,\xi)), (x,\xi)\in N^1A\}.$$
+
+Recall a point $y=\gamma_{x,\xi}(t_0)$ is a \textit{focal point} of $A$ if
+$$d(\exp^\perp)_{t_0\xi}:T_{t_0\xi}NA\to T_yM$$
+is degenerate.  We can then define the \textit{focal distance}, $\tau_f=\tau_{f,A}:N^1A\to\cl{\R},$
+$$\tau_f(x,\xi)=\inf\{s>0:d(\exp^\perp)_{s\xi}\text{ is degenerate}\}.$$
+Recall $\gamma_{x,\xi}(\tau_f(x,\xi))$ is a focal point if and only if there exists an $A$-Jacobi field $J$ along $\gamma_{x,\xi}$ such that $J(\tau_f(x,\xi))=0$.
+
+
+We say a point $y\in\cut(A)$ is an \textit{ordinary $A$-cut point} if there exists $(x,\xi),(z,\zeta)\in N^1A$, $x\neq z$ such that
+$$t_0=\tau_A(x,\xi)=\tau_A(z,\zeta),$$
+and
+$$\gamma_{x,\xi}(t_0)=y=\gamma_{z,\zeta}(t_0).$$
+
+
+\begin{thm}[A Klingenberg Lemma]\label{thm:klingLemSubman}
+(See Theorem 2.12 in \cite{kachalov2001inverse} and Lemma 2.11 (p.98) in \cite{sakai1996riemannian}.)
+
+Let $A\subset M$ be a compact Riemannian submanifold.
+\begin{enumerate}
+\item $\tau_A:N^1A\to\R$ is continuous,
+\item $\tau_f:N^1A\to\cl{R}$ is continuous.
+\item Suppose $(x,\xi)\in N^1A$, and let $y=\gamma_{x,\xi}(T)$.  Then $T=\tau_A(x,\xi)$ if and only if $\gamma=\rest{\gamma_{x,\xi}}_{[0,T]}$ is a minimizing geodesic segment, and either
+	\begin{enumerate}[i.]
+	\item $y$ is an ordinary $A$-cut point of $x$, or
+	\item $y$ is the first focal point.
+	\end{enumerate}
+	Moreover, for $t<\tau_A(x,\xi)$, we have that $d(\exp^\perp)_{t\xi}$ is nondegenerate.
+\item $\tau_A(x,\xi)<\tau(x,\xi)$ for all $(x,\xi)\in N^1A$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+This is going to be a long, hard, and detailed proof.  Take the time to do it right because it's important and I can't find it in the literature anywhere.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

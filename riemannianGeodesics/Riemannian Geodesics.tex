@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,latexsym,amsthm}
+
+\numberwithin{equation}{section}% Equation numbered by section
+
+\usepackage{geometry}
+\geometry{margin=4cm}% Adjusted to make HOX readable-2cm Normal
+
+\usepackage[T1]{fontenc}% Better text
+
+\usepackage{graphicx}% Included for figures
+
+\usepackage[notref,notcite]{showkeys}% add 'final' inside[]
+
+\usepackage[toc,page]{appendix}% Appendix sectioning
+
+
+\usepackage{dsfont}% Used for \id                             
+\usepackage{mathrsfs}% Used for \mathscr
+\usepackage{tensor}% Tensor indices	
+\usepackage{comment}% Commenting large sections
+\usepackage{enumerate}% Enumerate options
+\usepackage{mathtools}% Multilines environment
+\usepackage{tcolorbox}% Boxed notes	
+\usepackage{color}% Color words for clarification
+\usepackage{soul}% Strike through text	
+\usepackage{accents}% For \accentset										
+\usepackage[linktoc=all]{hyperref}% Links within document
+\hypersetup{
+    pdftoolbar=true,
+    pdfmenubar=true,
+    colorlinks,
+    citecolor=red,
+    filecolor=black,
+    linkcolor=violet,
+    urlcolor=black
+}
+
+\usepackage[noabbrev,capitalize,nameinlink]{cleveref}%Gives correct theorem names when linking.  Use \cref{}
+
+
+
+
+
+
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{conj}[thm]{Conjecture}
+
+\renewenvironment{proof}{{\noindent\bfseries Proof:}}{\qed}
+
+
+
+
+\input{../../../texInput/Shortcuts.tex}
+
+
+
+\title{Riemannian Geodesics}
+\author{Matt Robinson}
+%\author{}
+\date{}
+
+\begin{document}
+
+	\maketitle
+	\tableofcontents
+	
+	\include{src/variations}
+	\include{src/jacobi}
+	\include{src/standard}
+	\include{src/singleSubman}
+	
+	%Something about geodesic convexity
+	
+	
+	\bibliographystyle{plain}
+	\bibliography{../../../texInput/Bibliography}
+
+	
+\end{document}

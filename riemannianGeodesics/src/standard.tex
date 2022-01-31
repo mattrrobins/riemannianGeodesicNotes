@@ -1,0 +1,546 @@
+
+
+
+\section{The Classical Problem: $B=\{(p,q)\}$}
+
+\begin{tcolorbox}
+Most results are blending of \cite{klingenberg1995riemannian}, \cite{lee2006riemannian}, \cite{sakai1996riemannian}.	
+\end{tcolorbox}
+
+
+
+We consider the classical variational problem dealing with minimizing geodesics connecting two points.  To this end, let $(M,g)$ be a complete Riemannian manifold, and we require the boundary condition to be two distinct points.  That is, for $p,q\in M, p\neq q$,
+$$B=\{(p,q)\}\subset M\times M.$$
+Then $\mathcal{C}(B)$ is the space of all piecewise regular curves $\gamma:[a,b]\to M$ such that $\gamma(a)=p$ and $\gamma(b)=q$, and we write $\mathcal{C}(p,q)$. All variations of $\gamma$ are then proper, and all variation fields $V\in T_\gamma\mathcal{C}(p,q)$ are proper, i.e., $V(a)=V(b)=0$.  Moreover, in this setting our $B$-geodesics are simply just (Riemannian) geodesics.  Our variation formulas then simplify as follows.
+
+\begin{thm}[First Variation of Energy]
+    Let $\gamma\in\mathcal{C}(p,q)$ and $V\in T_\gamma\mathcal{C}(p,q)$ with associated variation $\Gamma:I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+    	\begin{align*}
+    		\hat{E}'(s)&=-\int_a^bg(\partial_s\Gamma,D_t\partial_t\Gamma)dt+\sum_{j=1}^{k-1}g(\partial_s\Gamma(s,t_j),\Delta\partial_t\Gamma(s,t_j)).
+    	\end{align*}
+    	
+    	In particular, when $s=0$,
+	\begin{align*}
+		dE_\gamma(V)&=-\int_a^bg(V(t),D_t\gamma'(t))dt+\sum_{j=1}^{k-1}g(V(t_j),\Delta\gamma'(t_j)).
+	\end{align*}
+\end{thm}
+
+\begin{thm}[Second Variation of Energy]
+    Let $\gamma\in\mathcal{C}(p,q)$ be a geodesic and $V,W\in T_\gamma\mathcal{C}(p,q)$ with associated two-parameter variation $\Gamma:I_\epsilon\times I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+	\begin{align*}
+		\hess(E)_\gamma(V,W)&=\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt,
+	\end{align*}
+	or alternatively,
+	\begin{align*}
+		&\hess(E)_\gamma(V,W)=-\int_a^b(g(D_t^2V+R_{V\gamma'}\gamma',W)dt+\sum_{j=1}^{k-1}g(\Delta(D_tV)(t_j),W(t_j)).
+	\end{align*}
+\end{thm}
+
+
+
+\subsection{Minimizing Geodesics and Conjugate Points}
+
+Let $(M,g)$ be a complete Riemannian manifold and suppose $\gamma\in\mathcal{C}(p,q)$ with $\gamma=\rest{\gamma}_{[a,b]}$ a geodesic segment.  Then we define the \textit{index form} of $\gamma$ to be the Hessian of the energy, that is, 
+$$I(V,W)=\hess(E)_\gamma(V,W),$$
+for $V,W\in T_\gamma\mathcal{C}(p,q)$.
+
+\begin{cor}
+    If $\gamma$ is a minimizing geodesic, then $I$ is positive semi-definite on $T_\gamma\mathcal{C}(p,q)$, that is, $I(V,V)\geq0$ for all $V\in T_\gamma\mathcal{C}(p,q)$.
+\end{cor}
+
+We say a geodesic segment, $\gamma:[a,b]\to M$ has an \textit{interior conjugate point} if there exists some $t\in(a,b)$ such that $\gamma(t)$ is conjugate to $\gamma(a)$ along $\gamma$.
+
+\begin{thm}[Theorem 10.15 in \cite{lee2006riemannian}]\label{thm:interiorConjugate}
+    Suppose $\gamma\in\mathcal{C}(p,q)$ is a geodesic segment.  If $\gamma$ has an interior conjugate point, then $I(V,V)<0$ for some $V\in T_\gamma\mathcal{C}(p,q)$.  In particular, if $\gamma$ has an interior conjugate point, then $\gamma$ is not minimal.
+\end{thm}
+
+\begin{proof}
+Suppose $q_0=\gamma(t_0)$ is an interior conjugate point for $\gamma$.  Let $J$ be a nontrivial Jacobi field along $\gamma$ vanishing at $t=a, t=t_0$.  Extend $J$ to the vector field
+$$\tilde{J}(t)=\begin{cases}
+J(t)&a\leq t\leq t_0\\
+0&t_0\leq t\leq b.	
+\end{cases}$$
+Then $\tilde{J}$ is a piecewise smooth Jacobi field along $\gamma$.  Let $Z\in T_\gamma\mathcal{C}(p,q)$ be such that $Z=-D_tJ(t_0)=\Delta D_t\tilde{J}(t_0)$, which nonzero since $J$ is nontrivial (take a bump function and frame along $\gamma$ to extend $-D_tJ(t_0)$).  For $\epsilon>0$ small, define $V_\epsilon=\tilde{J}+\epsilon Z$ which is in $T_\gamma\mathcal{C}(p,q)$.  Then
+$$I(V_\epsilon,V_\epsilon)=I(\tilde{J},\tilde{J})+2\epsilon I(\tilde{J},Z)+\epsilon^2I(Z,Z).$$
+Since $\tilde{J}$ is a Jacobi field,
+$$I(\tilde{J},\tilde{J})=-g(\Delta D_t\tilde{J}(t_0),\tilde{J}(t_0))=0.$$
+Similarly,
+\begin{align*}
+	I(\tilde{J},Z)&=-g(\Delta D_t\tilde{J}(t_0),Z(t_0))\\
+	&=g-(\Delta D_t\tilde{J}(t_0),-D_tJ(t_0))\\
+	&=-|D_tJ(t_0)|_g^2.
+\end{align*}
+Thus
+$$I(V_\epsilon,V_\epsilon)=-2\epsilon|D_tJ(t_0)|_g^2+\epsilon^2I(Z,Z),$$
+taking $\epsilon$ sufficiently small yields
+$$I(V_\epsilon,V_\epsilon)<0.$$
+
+\end{proof}
+
+\begin{thm}
+    Suppose $\gamma\in\mathcal{C}(p,q)$ is a geodesic segment.  If $p$ has no conjugate point along $\gamma$, then there exists $\epsilon>0$ such that for any piecewise smooth curve $\tilde{\gamma}\in\mathcal{C}(p,q)$ satisfying
+    	$$\max_{t\in[a,b]}\dist_g(\gamma(t),\tilde{\gamma}(t))<\epsilon,$$
+    	we have that
+    	$$L_g(\tilde{\gamma})\geq L_g(\gamma),$$
+    	with equality if and only if $\tilde{\gamma}$ is a reparametrization of $\gamma$.
+    
+\end{thm}
+
+\begin{proof}
+Letting $\ell=b-a$, we have that $\exp_p$ is nonsingular at $t\gamma'(a)$ for all $t\in[0,\ell]$.  Hence there exists a subdivision
+$$a=t_1<t_2<\cdots<t_n<t_{n+1}=b,$$
+and open neighborhoods $V_j$ of the line segments $[t_j,t_{j+1}]\gamma'(a)$ in $T_pM$, $1\leq j\leq n$ such that $\rest{\exp_p}_{V_j}$ is a diffeomorphism.  Let $U_j=\exp_p(V_j)$.  Then for $\epsilon>0$ small enough, $\gamma([t_j,t_{j+1}])\subset U_j$ for $1\leq j\leq n$.  Define
+$$\phi(t)=\left(\rest{\exp_p}_{V_j}\right)^{-1}(\tilde{\gamma}(t)),\qquad t\in[t_j,t_{j+1}].$$
+Then $\phi$ is a piecewise smooth curve connecting $0$ to $\ell\gamma'(a)$, so that $\tilde{\gamma}(t)=\exp_p(\phi(t)).$
+
+Thus by \cref{thm:paramProp}, $L_g(\tilde{\gamma})\geq L_g(\gamma)$ with equality if and only if $\tilde{\gamma}$ is a reparametrization of $\gamma$.
+\end{proof}
+
+
+\begin{thm}[Jacobi's Theorem]\label{thm:jacobi}
+    Suppose $\gamma\in\mathcal{C}(p,q)$ is a geodesic segment.
+    
+    \begin{enumerate}[a.]
+    \item $p$ has no conjugate along $\gamma$ if and only if $I$ is positive definite on $T_\gamma\mathcal{C}(p,q)$.
+    \item $q$ is the first conjugate point along $\gamma$ if and only if $I$ is positive semi-definite, but not positive definite on $T_\gamma\mathcal{C}(p,q)$.
+    \item $\gamma$ has an interior conjugate point if and only if there exists some $V\in T_\gamma\mathcal{C}(p,q)$ such that $I(V,V)<0$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+\begin{enumerate}[a.]
+\item 	Suppose $p$ has no conjugate point along $\gamma$.  Then $I$ is positive semi-definite.  Indeed, suppose there exists $V\in T_\gamma\mathcal{C}(p,q)$ such that $I(V,V)<0$, then $\gamma$ is not minimal.  Let $\Gamma(s,t)$ be a variation such that $\partial_s\Gamma(0,t)=V(t)$.  Then for sufficiently small $s$, the curves $t\mapsto\Gamma(s,t)$ have strictly bigger length than $\gamma$, a contradiction to the above theorem.  Thus $I$ is positive semi-definite.  If $I(V,V)=0$ for some $V\in T_\gamma\mathcal{C}(p,q)$, then $V$ is a Jacobi field, and since $p$ as no conjugate points, it must be trivial.  Thus $V=0$.
+
+	Conversely, if $p$ has a conjugate point at $\gamma(t_0)$ for some $t_0\in(a,b]$.  Let $J$ be the nontrivial Jacobi field such that $J(a)=J(t_0)=0$.  Extend $J$ trivially to $\tilde{J}\in T_\gamma\mathcal{C}(p,q)$.  As this is still a nontrivial (broken) Jacobi field, we have that $I(\tilde{J},\tilde{J})=0$, and hence $I$ is not positive definite.
+	
+\item Suppose $q$ is the first conjugate point along $\gamma$.  In particular, $\gamma$ has no interior conjugate point.  For any $V\in T_\gamma\mathcal{C}(p,q)$, we write $V(t)=V^j(t)E_j(t)$ where $\{E_j(t)\}$ is an orthonormal frame, parallel along $\gamma$.  For any $a<s<b$, define
+	$$V_s(t)=V^j\left(a+\frac{b-a}{s-a}(t-a)\right)E_j(t),\qquad a\leq t\leq s.$$
+	Then $V_s(a)=V_s(s)=0$, and since $\rest{\gamma}_{[a,c]}$ is a geodesic segment with no conjugate points, we know the from part (a.) that
+	$$I_s(V_s,V_s)>0,$$
+	where $I_s$ is the truncation of $I$ to $[a,s]$.  Hence by (any) convergence theorem, we have that
+	$$I(V,V)=\lim_{s\to b}I_s(V_s,V_s)\geq0.$$
+	So $I$ is positive semi-definite.  It's not positive definite, since $I(J,J)=0$ for any Jacobi field $J\in T_\gamma\mathcal{C}(p,q)$.
+	
+	Conversely, if $I$ was positive definite, then by (a.), $q$ would not be a conjugate point along $\gamma$.  If there exists $V\in T_\gamma\mathcal{C}(p,q)$ such that $I(V,V)<0$, then by the following (c.), $\gamma$ has an interior conjugate point, and so $q$ is not the first conjugate point along $\gamma$.
+	
+\item The only if direction is exactly \cref{thm:interiorConjugate}.  Conversely, if $I(V,V)<0$ for some $V\in T_\gamma\mathcal{C}(p,q)$, then $I$ is not positive semi-definite.  Hence $p$ must have a conjugate point along $\gamma$, and it must come before $q$, that is, $\gamma$ has an interior conjugate point.
+\end{enumerate}
+
+\end{proof}
+
+Let's unravel Jacobi's theorem.
+
+\begin{cor}
+Let $(M,g)$ be a Riemannian manifold, and $\gamma:[0,l]\to M$ a unit-speed geodesic.
+\begin{enumerate}[a.]
+	\item If $\gamma$ has an interior conjugate point, then $\gamma$ is not minimizing between $\gamma(0)$ and $\gamma(l)$.
+	\item IF $\gamma(0)$ has no conjugate point along $\gamma$, then $\gamma$ is locally minimizing, that is for any proper variation $\Gamma(s,t)$, we have that $L_g(\gamma)<L_g(\Gamma(s,\cdot))$ for all sufficiently small $s$.
+	\item If $\gamma(l)$ is the first conjugate point to $\gamma(0)$ along $\gamma$, then for any proper variation $\Gamma(s,t)$, we have that $L_g(\gamma)<L_g(\Gamma(s,\cdot)$ for all sufficiently small $s$, unless $\partial_s\Gamma(0,t)$ is a Jacobi field.
+\end{enumerate}
+
+    
+\end{cor}
+
+
+
+
+
+\subsection{Cut Points}
+
+\begin{tcolorbox}
+Most definitions and results are a blending of \cite{klingenberg1959contributions} \cite{klingenberg1995riemannian}, \cite{sakai1996riemannian}.	See also \cite{bishop1977decomposition}, \cite{weinstein1968cut}, \cite{wolter1979distance}.
+\end{tcolorbox}
+
+
+Let $(M,g)$ be a complete Riemannian manifold.  Then we define various critical distances related to our exponential map.  Let $(x,\xi)\in SM$ and let $\gamma_{x,\xi}$ denote the unit-speed geodesic emanating from $x$ in the direction $\xi$, that is,
+$$\gamma_{x,\xi}=\exp_x(t\xi),$$
+where
+$$\exp_x:T_xM\equiv S_xM\times[0,\infty)\to M,$$
+is our \textit{Riemannian exponential map}.
+
+Let $\cl{\R}=\R\cup\{\infty\}$, and define the function $\tau:SM\to\cl{\R}$,
+$$\tau(x,\xi)=\sup\{t>0:\dist_g(x,\gamma_{x,\xi}(t))=t\}.$$
+$\tau(x,\xi)$ is called the \textit{cut locus distance function} along $\gamma_{x,\xi}$.  This leads us to define the \textit{cut locus of a point $x$} to be the set
+$$\cut(x)=\{\gamma_{x,\xi}(\tau(x,\xi)):\xi\in S_xM, \tau(x,\xi)<\infty\}.$$
+Such a $y\in\cut(x)$ with $y=\gamma_{x,\xi}(\tau(x,\xi))$ is called a \textit{cut point of $x$ in the direction $\xi$}.
+
+
+
+The \textit{injectivity radius at $x$ of $M$} is the supremum in $\cl{\R}$ given by
+$$\inj_x(M)=\sup\{c>0:\rest{\exp_x}_{B(0,c)}\text{ is injective}\}.$$
+Alternatively, using the cut locus distance function, we could equivalently define
+$$\inj_x(M)=\min\{\tau(x,\xi):\xi\in S_xM\}.$$
+The \textit{injectivity radius of $M$} is then given by
+\begin{align*}
+	\inj(M)&=\inf_{x\in M}\left(\inj_x(M)\right)\\
+	&=\inf_{(x,\xi)\in SM}\tau(x,\xi).
+\end{align*}
+
+
+Recall that we say a point $y=\gamma_{x,\xi}(t)$ is a \textit{conjugate point at $x$ in the direction $\xi$} if 
+$$d(\exp_x)_{t\xi}:T_xM\to T_yM$$
+is degenerate.  This leads us to define the \textit{conjugate distance function along $\gamma_{x,\xi}$}, $\tau_c:SM\to\cl{\R}$,
+$$\tau_c(x,\xi)=\inf\{t>0:d(\exp_x)_{t\xi}\text{ is degenerate}\}.$$
+
+
+We say that a sequence $\{\gamma_j\}$ of geodesics \textit{converge} to a geodesic $\gamma_{x,\xi}$ if $x_j=\gamma_j(0)\to x$ and $\xi_j=\gamma_j'(0)\to \xi\in T_xM$.
+
+\begin{lem}
+    Suppose $\gamma_j\to\gamma_{x,\xi}$.  Then $\gamma_j(t_j)\to\gamma_{x,\xi}(t)$ whenever $t_j\to t$.  Furthermore, if $\gamma_j$ are minimizing geodesics joining $x_j=\gamma_j(0)$ to $y_j=\gamma_j(t_j)$ and $\gamma_j\to\gamma_{x,\xi}$ and $t_j\to \ell$, then $\gamma_{x,\xi}$ is a minimal geodesic joining $x$ to $y=\gamma_{x,\xi}(\ell)$.
+\end{lem}
+
+\begin{proof}
+Note that the first assertion is true because of continuous dependence of on initial conditions $(x,\xi)$ and parameter $t$.  For the second assertion, note that
+\begin{align*}
+	\dist_g(x,y)&=\lim_{j\to\infty}\dist_g(x_j,y_j)\\
+	&=\lim_{j\to\infty}t_j\\
+	&=\ell\\
+	&=L_g(\gamma_{x,\xi}([0,\ell])).
+\end{align*}
+\end{proof}
+
+
+\begin{lem}
+Let $(M,g)$ be a complete Riemannian manifold.
+\begin{enumerate}[i.]
+    \item The cut locus distance function $\tau:SM\to\cl{\R}$ is continuous.
+    \item The conjugate distance function $\tau_c:SM\to\cl{\R}$ is continuous.
+    \item The mapping $x\to\inj_x(M)$ is continuous.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}[i.]
+\item Suppose $(x_j,\xi_j),(x,\xi)\in SM$ is such that $(x_j,\xi_j)\to(x,\xi)$.  We first wish to show that $\tau(x_j,\xi_j)\to\tau(x,\xi)$.  Let $T$ be any limit point of $\{\tau(x_j,\xi_j)\}$ in $\cl{\R}$.  Letting $\gamma_j=\gamma_{x_j,\xi_j}$, we see that $\gamma_j\to\gamma_{x,\xi}$, and since $\gamma_j$ are minimal on $[0,\tau(x_j,\xi_j)]$, we conclude by the above lemma that $\rest{\gamma_{x,\xi}}_{[0,T]}$ is minimal as well.  By definition of $\tau(x,\xi)$, this implies
+$$T\leq\tau(x,\xi).$$
+If $T=+\infty$, then we're done.  Assume $T<+\infty$, and by possibly passing to a subsequence, we shall write $T=\lim_{j\to\infty}\tau(x_j,\xi_j).$
+
+Assume $T<\tau(x,\xi)$, and let $\epsilon>0$ be such that $T+\epsilon<\tau(x,\xi)$.  Thus for infinitely many $j$, we have that $\rest{\gamma_j}_{[0,T+\epsilon]}$ will not be minimizing between $x_j$ and $y_j=\gamma_j(T+\epsilon)$.  Hence for each such $j$, there exists $\eta_j\in S_{x_j}M$, $\eta_j\neq\xi_j$ such that $\rest{\gamma_{x_j,\eta_j}}_{[0,T+\epsilon]}$ is minimizing between $x_j$ and $y_j$.  Since $x_j\to x$ is convergent and $|\eta_j|=1$, by possibly passing to a subsequence, we may assume $\lim_{j\to\infty}\eta_j=\eta\in S_xM$ and $y=\lim_{j\to\infty}y_j$.
+
+We claim that $\xi\neq\eta$.  To this end, suppose $\xi=\eta$.  Then $\gamma_{x,\xi}(T)$ is a conjugate point to $x$ along $\gamma_{x,\xi}$.  Indeed, assume $\exp_x$ is regular at $T\xi\in T_xM$, and define the map $E:TM\to M\times M$, by
+$$E=\pi\times\exp,\qquad E(p,v)=(p,\exp_p(v)).$$
+Then $dE_{(x,T\xi)}$ has maximal rank and hence hence a diffeomorphism on some neighborhood $U$ of $(x,T\xi)$ in $TM$.  Thus for sufficiently large $j$, we have that $(x_j,\tau(x_j,\xi_j)\xi_j),(x_j,\tau(x_j,\xi_j)\eta_j)\in U$, but
+$$E(x_j,\tau(x_j,\xi_j)\xi_j)=(x_j,y_j)=E(x_j,\tau(x_j,\xi_j)\eta_j),$$
+and hence by injectivity, we have that $\eta_j=\xi_j$, a contradiction our choice of each $\eta_j$.  Thus $\gamma_{x,\xi}(T)$ is conjugate to $x$.  Since $T<\tau(x,\xi)$, this is in fact a contradiction, as no geodesic can be minimizing past its first conjugate point by Jacobi's theorem (\cref{thm:jacobi}).  Thus $\xi\neq\eta$, and $\gamma_{x,\xi}$ and $\gamma_{x,\eta}$ are two distinct minimizing geodesics between $x$ and $y$, a contradiction to $T<\tau(x,\xi)$ and the exponential map being injective here.  Thus $T=\tau(x,\xi)$ as desired.
+
+\item In similarity to above, suppose $\tau_c(x_j,\xi_j)\to T$ in $\cl{\R}$.  Then there exists $\eta_j\in\ker\left(d(\exp_{x_j})_{\tau_c(x_j,\xi_j)\xi_j}\right)$, $|\eta_j|=1$.  Noting that since $x_j\to x$ converges, $\{\eta_j\}$ is contained in a compact subset of $SM$ and hence we may assume converges to some $\eta\in S_xM$.  Then by continuity of the exponential, we see that
+$$\eta\in\ker\left(d(\exp_x)_{T\xi}\right),$$
+and hence $\gamma_{x,\xi}(T)$ is conjugate to $x$, showing that $T=\tau_c(x,\xi)$.  
+
+\item Suppose $x_j\to x$ and choose $\xi_j\in S_{x_j}M$ such that $\inj_{x_j}(M)=\tau(x_j,\xi_j)$.  Assume $\lim_{j\to\infty}\xi_j=\xi\in S_xM$.  By continuity of $\tau$, we then have that
+$$\inj_x(M)\leq\tau(x,\xi).$$
+Assume $\inj_x(M)<\tau(x,\xi)$ and let $\eta\in S_xM$ be such that $\inj_x(M)=\tau(x,\eta)$.  Let $\eta_j\in S_{x_j}M$ be any sequence such that $\eta_j\to\eta$.  But since
+$$\lim_{j\to\infty}\tau(x_j,\eta_j)=\tau(x,\eta)<\tau(x,\xi)=\lim_{j\to\infty}\tau(x_j,\xi_j),$$
+it follows that $\tau(x_j,\eta_j)<\tau(x_j,\xi_j)$ for all sufficiently large $j$, a contradiction to $inj_{x_j}(M)=\tau(x_j,\xi_j)$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{prop}
+    Suppose $(M,g)$ is a complete Riemannian manifold.  Then the following are equivalent:
+    \begin{enumerate}[i.]
+    \item $M$ is compact.
+    \item There exists $x\in M$ such that $\tau(x,\xi)<\infty$ for all $\xi\in S_xM$.
+    \item $\tau(x,\xi)<\infty$ for all $(x,\xi)\in SM$.	
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{itemize}
+\item[(i.)$\Rightarrow$(iii.)] Suppose $M$ is compact, then since $\tau$ is continuous on the compact space $SM$, it's bounded above.
+
+\item[(iii.)$\Rightarrow$(ii.)] Trivial.
+
+\item[(ii.)$\Rightarrow$(i.)] Suppose $\tau(x,\xi)<\infty$ for all $\xi\in S_xM$, then the map $\xi\mapsto\tau(x,\xi)$ is continuous on $S_xM$, and hence there exists $C>0$ such that $\tau(x,\xi)<C$ for all $\xi\in S_xM$, since $M$ is complete we have that $\exp_x(\cl{B(0,C)})=M$, and thus as the continuous image of a compact set, $M$ must be compact.
+\end{itemize}
+\end{proof}
+
+
+Consider the surface of revolution of $z=\frac{1}{x},$ $x>0$ for a complete (non-compact) Riemannian manifold with $\inj(M)=0$.
+
+\begin{prop}
+    Let $(M,g)$ be a complete Riemannian manifold, and suppose $x,y\in M$ with $y\notin\cut(x)$.  Let $\gamma:[0,b]\to M$ be the unique unit-speed, minimizing geodesic from $x$ to $y$, and let $p\in M$.  Then $p\in\gamma([0,b])$ if and only if
+    $$\dist(x,p)+\dist(p,y)+\dist(x,y).$$
+\end{prop}
+
+\begin{proof}
+Suppose $\gamma(s)=p$ for some $s\in[0,b]$.  Then
+\begin{align*}
+	\dist(x,y)&=L(\gamma)\\
+	&=L\left((\rest{\gamma}_{[0,s]}\right)+L\left(\rest{\gamma}_{[s,b]}\right)\\
+	&=\dist(x,p)+\dist(p,y).
+\end{align*}
+
+Conversely, suppose
+$$\dist(x,p)+\dist(p,y)=\dist(x,y).$$
+Let $\alpha$ be a minimizing geodesic from $x$ to $p$ and let $\beta$ be a minimizing geodesic from $p$ to $y$.  Let $\tilde{\gamma}$ denote the concatenation of $\alpha$ and $\beta$, that is, $\tilde{\gamma}=\alpha\cdot\beta$.  Then
+\begin{align*}
+	L(\tilde{\gamma})&=L(\alpha)+L(\beta)\\
+	&=\dist(x,p)+\dist(p,y)\\
+	&=\dist(x,y).
+\end{align*}
+That is, $\gamma$ is a minimizing broken geodesic from $x$ to $y$, and hence a minimizing geodesic from $x$ to $y$.  That is $\tilde{\gamma}=\gamma$ up to reparametrization and hence $p\in\gamma([0,b])$.
+\end{proof}
+
+
+
+\begin{lem}
+    Let $(x,\xi)\in SM$, then $\rest{\gamma_{x,\xi}}_{[0,\tau(x,\xi))}$ contains no conjugate points.  That is, the cut point on a geodesic appears before or coincides with the first conjugate point, or rather
+    $$\tau(x,\xi)\leq\tau_c(x,\xi),$$
+    for all $(x,\xi)\in SM$.
+\end{lem}
+
+\begin{proof}
+Assume $\tau_c(x,\xi)<\tau(x,\xi)$.  Then $\gamma_{x,\xi}$ is minimizing past its first conjugate point $\gamma_{x,\xi}(\tau_c(x,\xi))$ a contradiction to Jacobi's Theorem (Theorem\autoref{thm:jacobi}).
+\end{proof}
+
+We say $y\in\cut(x)$ is an \textit{ordinary cut point} if there exists $\xi,\eta\in S_xM$, $\xi\neq\eta$ such that
+$$\tau(x,\xi)=\tau(x,\eta),$$
+and
+$$\gamma_{x,\xi}(\tau(x,\xi))=y=\gamma_{x,\eta}(\tau(x,\xi)).$$
+We say $y\in\cut(x)$ is a \textit{singular cut point} if there exists exactly one minimal geodesic going $x$ to $y$.
+\begin{thm}[Klingenberg Lemma](Lemma 2.1.11 in \cite{klingenberg1995riemannian}, Proposition 4.1 in \cite{sakai1996riemannian}, Lemma 9.2.16 in \cite{petersen2006riemannian})\label{thm:klingLemma}
+    
+    Suppose $\tau(x,\xi)<\infty$, $(x,\xi)\in SM$, and let $y=\gamma_{x,\xi}(T)$.  Then $T=\tau(x,\xi)$ if and only if $\gamma=\rest{\gamma_{x,\xi}}_{[0,T]}$ is a minimizing geodesic segment, and either
+    \begin{enumerate}[i.]
+    \item $y$ is an ordinary cut point of $x$, or
+    \item $y$ is the first conjugate point along $\gamma$ from $x$ to $y$.	
+    \end{enumerate}
+
+\end{thm}
+
+\begin{proof}
+Suppose $\gamma$ is minimal.  If $y$ is the first conjugate point along $\gamma$, then by Jacobi's theorem, $\gamma$ cannot be minimal past $y$.  If $y$ is an ordinary cut point of $x$, then for any $\epsilon>0$, the geodesic segment $\rest{\gamma}_{[0,T+\epsilon]}$ is not minimal.  Indeed, assume to the contrary, that $\rest{\gamma}_{[0,T+\epsilon]}$ is minimal, and let $\eta\in S_M$, $\eta\neq\xi$ be such that $\gamma_\eta(T)=\gamma(T)$.  Then for $\epsilon>0$ sufficiently small, let $\alpha$ denote the unique, unit-speed, minimal geodesic connecting $\gamma_\eta(T-\epsilon)$ to $\gamma(T+\epsilon)$.  Then
+\begin{align*}
+	2\epsilon&=\dist(\gamma_\eta(T-\epsilon),\gamma_\eta(T))+\dist(\gamma(T),\gamma(T+_\epsilon))\\
+	&>\dist(\gamma_\eta(T-\epsilon),\gamma(T+\epsilon)),
+\end{align*}
+where the strict inequality, follows because $\gamma_\eta'(T)\neq\gamma'(T)$.  Thus
+\begin{align*}
+	L\left(\rest{\gamma_\eta}_{[0,T-\epsilon]}\cup\beta\right)&=(T-\epsilon)+\dist(\gamma_\eta(T-\epsilon),\gamma(T+\epsilon))\\
+	&<(T-\epsilon)+2\epsilon\\
+	&=T+\epsilon\\
+	&=L\left(\rest{\gamma}_{[0,T+\epsilon]}\right),
+\end{align*}
+a contradiction.  Hence $T=\tau(x,\xi)$.
+
+Conversely, suppose $T=\tau(x,\xi)$.  Then $\gamma$ is minimal since,
+$$\dist(x,\gamma(T))=\lim_{t\to T^-}\dist(x,\gamma(t))=\lim_{t\to T^-}t=T.$$
+If $y$ if the first conjugate point, then we're done, so assume $x$ has no conjugate point along $\gamma$ from $x$ to $y$.  In particular, $\exp_x$ is nonsingular at $T\xi$.
+
+Let $y_j=\gamma(T+1/j)$, and let $\gamma_j$ denote the minimal geodesic connecting $x$ to $y_j$.  That is,
+$$y_j(t)=\exp_x(t\eta_j),$$
+for some $\eta_j\in S_xM$.  Let
+$$s_j=\dist(x,y_j).$$
+So $\gamma_j(s_j)=y_j=\gamma(T+1/j)$.  Since $\rest{\gamma}_{[0,T+1/j]}$ is not minimal, we have that
+$$s_j<T+\frac{1}{j}.$$
+Let $\eta\in S_xM$ be a limit point of $\{\eta_j\}$.  Note that
+\begin{align*}
+	\lim_{j\to\infty}s_j&=\lim_{j\to\infty}\dist(x,y_j)\\
+	&=\dist(x,y)\\
+	&=T,
+\end{align*}
+and so
+\begin{align*}
+	\exp_x(T\eta)&=\lim_{j\to\infty}\exp_x(s_j\eta_j)\\
+	&=\lim_{j\to\infty}\gamma_j(s_j)\\
+	&=\lim_{j\to\infty}\gamma(T+1/j)\\
+	&=\gamma(T)\\
+	&=y.
+\end{align*}
+That is,
+$$\exp_x(T\xi)=\exp_x(T\eta).$$
+If $\eta\neq\xi$, then we're done.  Suppose $\eta=\xi$.  We've already seen that
+$$\exp_x(s_j\eta_j)=\gamma(T+1/j)=\exp_x((T+1/j)\xi),$$
+and $s_j\eta_j\to T_\eta=T\xi$ and $(T+1/j)\xi\to T\xi$.  Moreover, since $s_j<T+1/j$, we have that $s_j\eta_j\neq (T+1/j)\xi$.  Thus $\exp_x$ is not locally injective near $T\xi$, and hence that $T\xi$ is a singular point for $\exp_x$, a contradiction.  Hence $\eta\neq\xi$, and the result follows.
+\end{proof}
+
+As both conditions (i.) (trivially) and (ii.) (by Jacobi's Theorem) are symmetric in $x$ and $y$, we have the following corollary:
+
+\begin{cor}
+    $y\in\cut(x)$ if and only if $x\in\cut(y).$
+\end{cor}
+
+Moreover, we have that the Klingenberg Lemma implies that all singular cut points are first conjugate points.
+
+We can strengthen the Klingenberg Lemma to when the cut point $y\in\cut(x)$ is the closest point in the cut locus to $x$.
+
+\begin{thm}[Klingenberg Theorem]\label{thm:klingTheorem}
+  If $y\in\cut(x)$ is such that $\dist(x,y)=\dist(x,\cut(x))$, that is, $\dist(x,y)=\inj_x(M)$, and none of the minimizing geodesics from $x$ to $y$ posses a conjugate point, then there exists exactly two minimizing geodesics $\gamma_1,\gamma_2:[0,1]\to M$  from $x$ to $y$, and they meet at $y$ with opposite directions, $\gamma_1'(1)=-\gamma_2'(1)$.  If $\dist(x,y)=\inj(M)$, then $\gamma_1$ and $\gamma_2$ form a closed geodesic loop, i.e., $\gamma_1'(0)=-\gamma_2'(0)$.	  
+\end{thm}
+
+\begin{proof}
+Let $\gamma_1,\gamma_2[0,1]\to M$ be two distinct minimizing geodesics from $x$ to $y$ with initial velocity $\xi_1,\xi_2\in T_xM$, $\xi_1\neq\xi_2$.  This is guaranteed, since $y$ is not a conjugate point along any any minimal geodesic connecting $x$ to $y$.
+
+Suppose $\gamma_1'(1)\neq-\gamma_2'(1)$.  Let $\eta\in T_yM$ be such that
+$$g_y(\eta,\gamma_1'(1))<0\qquad\text{and}\qquad g_y(\eta,\gamma_2'(1))<0,$$
+i.e., $\eta$ forms an angle greater than $\frac{\pi}{2}$ with both $\gamma_1'(1)$ and $\gamma_2'(1)$.
+
+Let $V_1, V_2\subset T_xM$ be neighborhoods of $\xi_1,\xi_2$ respectively, such that $\rest{\exp_x}_{V_j}$ is a diffeomorphism. Let $U_j=\exp_x(V_j$.  Since $\exp_x(\xi_1)=y=\exp_x(\xi_2)$, we have that $U_1\cap U_2\neq\emptyset$ and is hence open. By possibly shrinking $V_j$, we may assume $V_1\cap V_2=\emptyset$.
+
+For $\epsilon>0$ sufficiently small and $s\in I_\epsilon$, the curve $\sigma(s)=\exp_y(s\eta)\in U_1\cap U_2$.  Define the curves
+$$\phi_j(s)=\left(\rest{\exp_x}_{V_j}\right)^{-1}(\sigma(s)),\qquad s\in I_\epsilon$$
+in $T_xM$.  Note that $\phi_j(0)=\xi_j$. Now define the variations $\Gamma_j:I_\epsilon\times[0,1]$ of $\gamma_j$ by
+$$\Gamma_j(s,t)=\exp_x(t\phi_j(s)).$$
+Moreover, we have variation field
+$$V_j(t)=d(\exp_x)_{t\xi_j}(t\phi_j'(0)),$$
+and so $V_j(0)=0$ and $V_j(1)=\eta$ (and hence this is not a proper variation).  Then by our first variation formula, we have that
+$$\frac{dE}{ds}(\gamma_j)=g(V_j(1),\gamma_j'(1))=g(\eta,\gamma_j'(1))<0.$$
+Hence
+$$\frac{dL}{ds}(\gamma_j)<0.$$
+That is, $s\mapsto L(\Gamma_j(s,\cdot))$ is a decreasing function near $s=0$.  Hence for $\delta>0$ sufficiently small, we have that
+$$L(\Gamma_j(\delta,\cdot))<L(\gamma_j).$$
+Moreover, we know that since $\exp_x$ is nonsingular for each $V_j$, that
+$$L(\Gamma_1(\delta,\cdot))=\dist(x,\sigma(\delta))=L(\Gamma_2(\delta,\cdot)).$$
+Thus $\dist(x,\sigma(\delta))<\dist(x,y)$, and $\sigma(\delta)\in\cut(x)$, and contradiction to our choice of $y$.  Hence $\gamma_1'(1)=-\gamma_2'(1)$.
+
+Furthermore, if $\dist(x,y)=\inj(M)$, then applying the above result to $-\gamma_1$ and $-\gamma_2$, the desired result follows.
+\end{proof}
+
+As seen in \cite{weinstein1968cut}, for any compact manifold $M$ which is not homeomorphic to $S^2$, there exists a Riemannian metric $g$ on $M$ such that there exists $p\in M$ for which $\cut(p)$ contains no conjugate point.
+
+
+
+
+We now fix $p\in M$, and let $\tau(\xi)=\tau(p,\xi)$ for $\xi\in S_pM$, that is, we're considering the restriction of our cut distance function to single tangent space.  We let
+$$\widetilde{\cut}(p):=\{\tau(\xi)\xi:\xi\in S_pM, \tau(\xi)<\infty\},$$
+and hence
+$$\cut(p)=\exp_p(\widetilde{\cut}(p)).$$
+We then define the interior sets
+$$\tilde{\mathcal{I}}_p:=\{t\xi:0\leq t<\tau(\xi),\xi\in S_pM\}$$
+and
+$$\mathcal{I}_p:=\exp_p(\tilde{\mathcal{I}}_p).$$
+
+\begin{lem}[Cf. Theorem 2.1.14 in \cite{klingenberg1995riemannian} and Lemma 4.4 in \cite{sakai1996riemannian}]
+    Our cut locus and interiors sets satisfy the following:
+    \begin{enumerate}[i.]
+    	\item $\mathcal{I}_p\cap\cut(p)=\emptyset$, $M=\mathcal{I}_p\cup\cut(p)$, and $\cl{\mathcal{I}_p}=M$,
+    	\item $\tilde{\mathcal{I}}_p$ is the maximal domain containing $0_p\in T_pM$ on which $\exp_p$ is a diffeomorphism.
+    	\item $\cut(p)$ is a null set in $M$ and $\dim{\cut(p)}\leq n-1$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}
+	\item Let $q\in M$, then since $M$ is complete, there exists a minimizing geodesic from $p$ to $q$.  Let $\gamma_{p,\xi}$ denote the geodesic, and let $\gamma_{p,\xi}(s)=\dist(p,q)$.  Then
+		$$s=\dist(p,q),$$
+		and hence $s\leq\tau(\xi)$ which shows both that $q\in \mathcal{I}_p\cup\cut(p)$ and $q\in\cl{\mathcal{I}_p}$.
+		
+		Now, suppose $\exp_p(u)=\exp_p(v)$ for some $u\in\tilde{\mathcal{I}}_p$ and some $v\in\widetilde{\cut}(p)$.  That is,
+		$$\gamma_{p,\frac{u}{|u|_g}}(|u|_g)=\gamma_{p,\frac{v}{|v|_g}}(|v|_g),$$
+		and hence, in particular
+		$$|u|_g=\tau(u/|u|_g),$$
+		which contradicts $u\in\tilde{\mathcal{I}}_p$.  Hence $\mathcal{I}_p\cap\cut(p)=\emptyset$.
+		
+	\item We note that $\tilde{\mathcal{I}}_p$ is a connected (since it's star-shaped about $0_p\in T_pM$) open subset of $T_pM$.  Since it contains no conjugate tangent vectors by Klingenberg's lemma, and it's injective by the an identical argument to previous part ((.i)), we conclude $\rest{\exp_p}_{\tilde{\mathcal{I}}_p}$ is a diffeomorphism.  Moreover, suppose the set is not maximal.  Then there exists $u\in\widetilde{\cut}(p)$ for which $\exp_p$ is regular on some open neighborhood $U$ of $u\in T_pM$.  Hence $\exp_p$ is a diffeomorphism on $\tilde{\mathcal{I}}_p\cup U$, and since $\exp_p(U\setminus\tilde{\mathcal{I}}_p)\subseteq\cut(p)$, we obtain a contradiction since by the following assertion of $\dim{\cut(p)}\leq n-1$ holds, but $\exp_p$ has full rank $U$.
+	
+	\item Since $\tau(\xi)$ is continuous, it follows that $\widetilde{\cut}(p)$ is null in $T_pM$ and $\dim{\widetilde{\cut}(p)}=n-1$ if it's nonempty.  Since $\exp_p$ is smooth, it then follows that $\dim{\cut(p)}\leq n-1$ as desired.
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+%%%%%
+\subsection{The Gradient of the Distance Function}\footnote{See \cite{meyer1989toponogov} for an exposition on the Taylor expansion.}
+
+Suppose $(M,g)$ is a complete Riemannian manifold.  Fix $p\in M$, and let $r:M\to\R$,
+$$r(q)=\dist_g(p,q).$$
+
+\begin{lem}[Lemma 4.4 in \cite{sakai1996riemannian}]
+    $(\exp_p)^{-1}:M\setminus\cut(p)\to T_pM$ is a diffeomorphism onto its image.
+\end{lem}
+
+\begin{proof}
+This follows immediately from our characterization of $\tilde{\mathcal{I}}_p$.
+\end{proof}
+
+On $M\setminus(\cut(p)\cup\{p\})$, we have that
+$$r(q)=|(\exp_p)^{-1}(q)|_g.$$
+
+
+
+
+
+\begin{thm}[Proposition 4.8 in \cite{sakai1996riemannian}]
+    $$\grad{r}_q=\gamma_{pq}'(r(q)),$$
+    where $\gamma_{pq}$ denotes the unique minimal unit-speed geodesic from $p$ to $q$.  In particular,
+    $$|\grad{r}_q|_g=1.$$
+\end{thm}
+\HOX{This should be able to be reworded cleaner using $\mathcal{C}(B)$ I think.}
+\begin{proof}
+Let $X\in T_qM$ and $\alpha:(-\epsilon,\epsilon)\to M$ be the integral curve with $\alpha(0)=q$, $\alpha'(0)=X$.  By possibly shrinking $\epsilon>0$, we may assume $\alpha(s)\notin(\cut(p)\cup\{p\}$ for all $-\epsilon<s<\epsilon$.  Let $\Gamma:(-\epsilon,\epsilon)\times[0,r(q)]\to M$ be the smooth variation of geodesics
+$$\Gamma(s,t)=\gamma_{p\alpha(s)}(t).$$
+Then by the first variation formula, we obtain
+\begin{align*}
+	dr_q(X)&=\rest{\pfrac{}{s}}_{s=0}r\circ\alpha(s)\\
+	&=\rest{\pfrac{}{s}}_{s=0}d(p,\alpha(s))\\
+	&=\rest{\pfrac{}{s}}_{s=0}L(\Gamma(s,\cdot))\\
+	&=\rest{\pfrac{}{s}}_{s=0}\int_0^{r(q)}g(\partial_t\Gamma(s,t),\partial_t\Gamma(s,t))^{1/2}dt\\
+	&=\int_0^{r(q)}\frac{1}{2}\frac{1}{|\partial_t\Gamma(0,t)|_g}2g(\rest{\partial_s}_{s=0}\partial_t\Gamma(s,t),\partial_t\Gamma(0,t))dt\\
+	&=\int_0^{r(q)}\frac{g(\rest{\partial_s}_{s=0}\partial_t\Gamma(s,t),\gamma_{pq}'(t))}{|\gamma_{pq}'(t)|_g}dt\\
+	&=-\int_0^{r(q)}g(\rest{\partial_s}_{s=0}\Gamma(s,t),\nabla_{\gamma_{pq}'(t)}\gamma_{pq}'(t))dt+\rest{g(\rest{\partial_s}_{s=0}\Gamma(s,t),\gamma_{pq}'(t)}_0^{r(q)})\\
+	&=g(\rest{\partial_s}_{s=0}\Gamma(s,r(q)),\gamma_{pq}'(r(q)))-g(\rest{\partial_s}_{s=0}p,\gamma_{pq}'(0))\\
+	&=g(\rest{\partial_s}_{s=0}\alpha(s),\gamma_{pq}'(r(q)))\\
+	&=g(\gamma_{pq}'(r(q)),X),
+\end{align*}
+and hence
+$$\grad{r}_q=\gamma_{pq}'(r(q)),$$
+as desired.
+\end{proof}
+
+\begin{cor}
+    If $r(p)=d(p,q)$, then
+    $$\grad{r}_p=\gamma_{qp}'(r(p)).$$
+\end{cor}
+
+
+\begin{lem}
+    $r$ is smooth near $q$ if and only if $q\notin\cut(p)\cup\{p\}$.
+\end{lem}
+
+\begin{proof}
+By the previous Lemma, we know if $q\notin\cut(p)\cup\{p\}$ then $r$ is smooth.  Moreover, if $q=p$, then our norm is not smooth at $0$ as usual.  Finally, suppose $q\in\cut(p)$.  Then by the Klingenberg lemma, $q$ is either an ordinary cut point or a first conjugate point.  Suppose $q$ is an ordinary cut point, that is, there exists distinct $\xi,\eta\in S_qM$ such that
+$$\gamma_{q,\xi}(s)=q=\gamma_{q,\eta}(s)$$
+for some $s>0$.  We note for all $t<s$, that
+$$\grad{\dist(q,\cdot)}_{\gamma_{q,\xi}(t)}=\gamma_{q,\xi}'(t),$$
+and similarly at $\gamma_{q,\eta}(t)$.  Thus
+\begin{align*}
+	\lim_{t\to0^+}\grad{\dist(q,\cdot)}_{\gamma_{q,\xi}(t)}&=\lim_{t\to0^+}\gamma_{q,\xi}'(t)\\
+	&=\xi\\
+	&\neq\eta\\
+	&=\lim_{t\to0^+}\gamma_{q,\eta}'(t)\\
+	&=\lim_{t\to0^+}\grad{\dist(q,\cdot)}_{\gamma_{q,\eta}(t)},
+\end{align*}
+thus showing $r$ cannot be smooth at $q$.
+
+If $q$ is a first conjugate point, then $q$ is a limit of ordinary cut points, and hence $r$ cannot be smooth at $q$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,388 @@
+
+
+
+\section{Variations}
+
+\begin{tcolorbox}
+In this section we borrow freely from many of the standard sources of Riemannian geometry of \cite{ballmann2015critical}, \cite{carmo1992riemannian}, \cite{chavel2006riemannian}, \cite{gallot1990riemannian}, \cite{klingenberg1995riemannian}, \cite{lang1995differential} \cite{lee2006riemannian}, \cite{morse1928calculus}, \cite{nicolaescu2007lectures}, \cite{o1983semi}, \cite{petersen2006riemannian}, with an emphasis on \cite{sakai1996riemannian}.
+\end{tcolorbox}
+
+
+Let $M$ be a connected smooth manifold.  A smooth curve segment $\gamma:[a,b]\to M$ is said to be \textit{regular} if $\gamma'(t)\neq0$ for all $t\in[a,b]$.  A continuous curve segment $\gamma:[a,b]\to M$ is said to be \textit{piecewise regular} if there exits a partition
+$$a=t_0<t_1<\cdots<t_k=b,$$
+such that $\rest{\gamma}_{[t_j,t_{j-1}]}$ is regular for each $1\leq j\leq k$.  A curve $\tilde{\gamma}:[c,d]\to M$ is a reparametrization of $\gamma$ if $\tilde{\gamma}=\gamma\circ\phi$, where $\phi:[c,d]\to[a,b]$ is a homeomorphism, which is piecewise smooth.
+
+Suppose $B\subset M\times M$ is a (topologically) closed, immersed submanifold.  Let $\mathcal{C}(B)$ (or $\mathcal{C}([a,b];B)$ when the domain needs to be specified) denote the space of piecewise regular curves $\gamma:[a,b]\to M$ such that
+$$(\gamma(a),\gamma(b))\in B.$$
+This submanifold $B$ will give us a boundary condition on our curves, and so we shall say such a $B$ is a \textit{boundary condition}.
+
+Given $\gamma\in\mathcal{C}(B)$, we say $\Gamma:I_\epsilon\times[a,b]\to M$ is \textit{variation of $\gamma$}, if 
+\begin{enumerate}[i.]
+	\item $\Gamma$ is continuous, and there exists a subdivision $a=t_0<t_1<\cdots<t_k=b$, such that $\rest{\Gamma}_{I_\epsilon\times[t_{j-1},t_j]}$ is smooth,
+	\item $\Gamma(s,\cdot)\in\mathcal{C}(B)$ for each $s\in I_\epsilon$, 
+	\item and $\Gamma(0,\cdot)=\gamma$.
+\end{enumerate}
+
+Given a continuous family of curve $\Gamma(s,t):I_\epsilon\times[a,b]\to M$ such that $(i.)$ holds, we say that $\Gamma$ is an \textit{admissible family}, and the subdivision is an \textit{admissible partition}.  
+
+
+Let's now treat $\mathcal{C}(B)$ as a manifold itself\footnote{See \textit{Notes on Riemannian Geometry of Manifolds of Maps} in ''PDF: Other'', as well as check out Hilbert, Banach and Fr\'echet manifolds.}.  Let $\Gamma$ be a variation of $\gamma\in\mathcal{C}(B)$, then the \textit{longitudinal curves} $s\mapsto\Gamma(s,t)=\Gamma_s(t)$ is a point in $\mathcal{C}(B)$ and the \textit{transverse curves} $s\mapsto\Gamma(s,t)=\Gamma_t(s)$ is a curve in $\mathcal{C}(B)$ starting at $\gamma$.  
+
+Consider the vector field $V(t)$ along $\gamma$ defined by
+$$V(t)=\partial_s\Gamma(0,t)=d\Gamma\left(\rest{\pfrac{}{s}}_{s=0}\right),$$
+which we call the \textit{variation field} of $\Gamma$.  Since the initial velocity of a curve is its linear description at the starting point, we see that the initial velocity of $\Gamma$ is the variational field $V$.  Since $(\Gamma(s,a),\Gamma(s,b))\in B$ for all $s\in I_\epsilon$, we have that $(V(a),V(b))\in T_{(\gamma(a),\gamma(b))}B$.  
+
+The tangent vectors to a manifold at a point are exactly all initial velocities of all curves starting at that point.  This leads us to characterize the tangent space $T_\gamma\mathcal{C}(B)$ of $\mathcal{C}(B)$ at $\gamma$ at the space of all piecewise-smooth vector fields $V$ on $\gamma$ such that $(V(a),V(b))\in T_{(\gamma(a),\gamma(b))}B$.  
+
+Note that when $M$ is endowed with a semi-Riemannian metric $g$, for any such $V(t)\in T_\gamma\mathcal{C}(B)$, the variation given by
+\begin{equation}\label{eq:genVariation}
+\Gamma(s,t)=\exp_{\gamma(t)}{sV(t)},
+\end{equation}
+is the curve $s\mapsto\Gamma_s(t)\in\mathcal{C}(B)$ with ``initial velocity'' $V(t)$.  This leads to a complete characterization of the tangent spaces $T_\gamma\mathcal{C}(B)$.  Moreover, note that for any $(X,Y)\in T_{(\gamma(a),\gamma(b))}B$, fix any $c\in[a,b]$, parallel transport $X$ along $\gamma$ from $\gamma(a)$ to $\gamma(c)$, and piecewise connect it to the parallel transport of $Y$ along $\gamma$ from $\gamma(b)$ to $\gamma(c)$, and we obtain a vector $V\in T_\gamma\mathcal{C}(B)$.
+
+We shall use the following auxiliary lemmata dealing with changing the order of differentiation of variations.
+
+\begin{lem}[Symmetry Lemma]\label{thm:symmetryLemma}
+    Let $\nabla$ denote a connection on $M$ and let $\Gamma:I_\epsilon\times[a,b]\to M$ be an admissible family of curves, then on any rectangle $I_\epsilon\times[t_j,t_{j-1}]$ for which $\Gamma$ is smooth,
+    $$D_s\partial_t\Gamma=D_t\partial_s\Gamma.$$
+\end{lem}
+
+\begin{proof}
+As this is local, we write in coordinates
+$$\Gamma(s,t)=(x^j(s,t)),$$
+and so
+$$\partial_t\Gamma(s,t)=\pfrac{x^j}{t}\partial_j,\qquad \partial_s\Gamma(s,t)=\pfrac{x^j}{s}\partial_j.$$
+Hence
+$$D_s\partial_t\Gamma=\left(\frac{\partial^2x^k}{\partial s\partial t}+\pfrac{x^i}{t}\pfrac{x^j}{s}\Gamma_{ij}^k\right)\partial_k,$$
+and
+$$D_t\partial_s\Gamma=\left(\frac{\partial^2x^k}{\partial t\partial s}+\pfrac{x^i}{s}\pfrac{x^j}{t}\Gamma_{ij}^k\right)\partial_k,$$
+and the result follows.
+
+Note that since $\nabla$ is torsion-free, we have the coordinate-free expression
+\begin{align*}
+	D_s\partial_t\Gamma-D_t\partial_s\Gamma&=\left[d\Gamma\left(\pfrac{}{s}\right),d\Gamma\left(\pfrac{}{t}\right)\right]\\
+	&=d\Gamma\left[\pfrac{}{s},\pfrac{}{t}\right]\\
+	&=0.
+\end{align*}
+
+\end{proof}
+
+\begin{lem}[Curvature Lemma]\label{thm:curvatureLemma}
+    Let $\nabla$ denote a connection on $M$ and let $\Gamma:I_\epsilon\times[a,b]\to M$ be an admissible family of curves and let $V$ be a piecewise-smooth vector field on $\Gamma$, where $V$ is smooth on the same admissible partition.  Then on any rectangle $I_\epsilon\times[t_j,t_{j-1}]$ for which $\Gamma$ and $V$ are smooth,
+    $$[D_s,D_t]V=R_{\partial_s\Gamma\partial_t\Gamma}V.$$
+\end{lem}
+
+\begin{proof}
+As this is local, we write in coordinates
+$$\Gamma(s,t)=(x^j(s,t)),\qquad V(s,t)=V^j(s,t)\partial_j.$$
+Then
+$$D_tV=\pfrac{V^j}{t}\partial_j+V^jD_t\partial_j,$$
+and
+$$D_sD_tV=\frac{\partial^2 V^j}{\partial s\partial t}\partial_j+\pfrac{V^j}{t}D_s\partial_j+\pfrac{V^j}{s}D_t\partial_j+V^jD_sD_t\partial_j.$$
+Interchanging $s$ and $t$, we then see that
+\begin{align*}
+	[D_s,D_t]V&=D_sD_tV-D_tD_sV\\
+	&=V^j(D_sD_t\partial_j-D_tDs\partial_j)\\
+	&=V^j[D_s,D_t]\partial_j.
+\end{align*}
+Computing this commutator, we first see that
+$$D_t\partial_j=\nabla_{\partial_t\Gamma}\partial_j=\pfrac{x^i}{t}\nabla_{\partial_i}\partial_j,$$
+and then
+\begin{align*}
+	D_sD_t\partial_j&=D_s\left(\pfrac{x^i}{t	}\nabla_{\partial_i}\partial_j\right)\\
+	&=\frac{\partial^2 x^i}{\partial s\partial t}\nabla_{\partial_i}\partial_j+\pfrac{x^i}{t}D_s\nabla_{\partial_i}\partial_j\\
+	&=\frac{\partial^2 x^i}{\partial s\partial t}\nabla_{\partial_i}\partial_j+\pfrac{x^i}{t}\pfrac{x^k}{s}\nabla_{\partial_k}\nabla_{\partial_i}\partial_j.
+\end{align*}
+Again interchaing $s$ and $t$, we then see that
+\begin{align*}
+	[D_s,D_t]\partial_j&=D_sD_t\partial_j-D_tD_s\partial_j\\
+	&=\pfrac{x^i}{s}\pfrac{x^k}{t}\nabla_{\partial_i}\nabla_{\partial_k}\partial_j-\pfrac{x^i}{s}\pfrac{x^k}{t}\nabla_{\partial_k}\nabla_{\partial_i}\partial_j\\
+	&=\pfrac{x^i}{s}\pfrac{x^k}{t}[\nabla_{\partial_i},\nabla_{\partial_k}]\partial_j\\
+	&=\pfrac{x^i}{s}\pfrac{x^k}{t}R_{\partial_i\partial_k}\partial_j\\
+	&=R_{\partial_s\Gamma\partial_t\Gamma}\partial_j.
+\end{align*}
+Thus
+\begin{align*}
+	[D_s,D_t]V&=V^j[D_s,D_t]\partial_j\\
+	&=V^jR_{\partial_s\Gamma\partial_t\Gamma}\partial_j\\
+	&=R_{\partial_s\Gamma\partial_t\Gamma}V
+\end{align*}
+\end{proof}
+
+
+
+
+\subsection{The Energy and Length Functionals}
+
+Let $(M,g)$ be a connected Riemannian manifold with boundary condition $B$.  Consider the Lagrangian $TM\to\R$ given by
+$$(x,v)\mapsto\frac{1}{2}g_x(v,v),$$
+then we obtain the associated action, called the \textit{energy functional}, $E:\mathcal{C}(B)\to\R$ given by
+$$E(\gamma)=\frac{1}{2}\int_a^bg_{\gamma(t)}(\gamma'(t),\gamma'(t))dt.$$
+Consider the related Lagrangian $TM\to\R$ given by
+$$(x,v)\mapsto\sqrt{g_x(v,v)},$$
+and its associated action, called the \textit{length functional}, $L:\mathcal{C}(B)\to\R$ given by
+$$L(\gamma)=\int_a^b\sqrt{g_{\gamma(t)}(\gamma'(t),\gamma'(t))}dt.$$
+
+By H\"older's inequality, we see that
+\begin{align*}
+	\left(L(\gamma)\right)^2&=\left\{\int_a^b|\gamma'(t)|_gdt\right\}^2\\
+	&\leq \left(\int_a^b1^2dt\right)\left(\int_a^b|\gamma'(t)|_g^2dt\right)\\
+	&=2(b-a)E(\gamma),
+\end{align*}
+where we have equality if and only if $|\gamma'(t)|_g$ is constant.
+
+\begin{prop}
+    A curve $\gamma$ minimizes $E$ if and only if $\gamma$ minimizes $L$ and $|\gamma'|_g$ is constant.  Moreover, as any regular curve can be reparametrized to have constant speed, we see that the minimization of either functional is equivalent.
+\end{prop}
+
+
+
+
+\subsection{The First Variation}
+
+Let $(M,g)$ be a complete Riemannian manifold with boundary condition $B$.  Let $\gamma\in\mathcal{C}(B)$ and $V\in T_\gamma\mathcal{C}(B)$, then as the smooth map\footnote{Show $E$ is smooth once we have Hilbert manifold knowledge.} $E:\mathcal{C}(B)\to\R$, we have the exterior differential $dE_\gamma:T_\gamma\mathcal{C}(B)\to\R$.  Alternatively, let $\Gamma:I_\epsilon\times[a,b]\to M$ be a variation of $\gamma$ with variation field $V$.  Then we can consider the function
+$$\hat{E}(s):=E\circ\Gamma(s,\cdot),\qquad \hat{E}:I_\epsilon\to\R,$$
+and hence the derivative $\hat{E}'(s)$.  In particular, we have that
+\begin{align*}
+	\hat{E}'(0)&=dE_\gamma\circ\pfrac{\Gamma}{s}(0,\cdot)\\
+	&=dE_\gamma(V).
+\end{align*}
+
+\begin{thm}[First Variation of Energy]\label{thm:firstVarEnergy}
+    	Let $\gamma\in\mathcal{C}(B)$ and $V\in T_\gamma\mathcal{C}(B)$ with associated variation $\Gamma:I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+    	\begin{align*}
+    		\hat{E}'(s)&=-\int_a^bg(\partial_s\Gamma,D_t\partial_t\Gamma)dt+\sum_{j=1}^{k-1}g(\partial_s\Gamma(s,t_j),\Delta\partial_t\Gamma(s,t_j))\\
+    		&\qquad\qquad+g(\partial_s\Gamma(s,b),\partial_t\Gamma(s,b))-g(\partial_s\Gamma(s,a),\partial_t\Gamma(s,a)).
+    	\end{align*}
+    	
+    	In particular, when $s=0$,
+	\begin{align*}
+		dE_\gamma(V)&=-\int_a^bg(V(t),D_t\gamma'(t))dt+\sum_{j=1}^{k-1}g(V(t_j),\Delta\gamma'(t_j))\\
+		&\qquad\qquad +g(V(b),\gamma'(b))-g(V(a),\gamma'(a)).
+	\end{align*}
+\end{thm}
+
+Note that we're using the notation
+	$$\Delta f(t)=\lim_{h\to0^+}(f(t+h)-f(t-h)).$$
+
+\begin{proof}
+Since everything is smooth on the compact set $[t_{j-1},t_j]$, we may differentiate under the integral sign,\footnote{Make a file for Leibniz integral rule, and include the various Fubini-Tonelli, and usual convergence.} and hence
+\begin{align*}
+	\frac{1}{2}\frac{d}{ds}\int_{t_{j-1}}^{t_j}g(\partial_t\Gamma,\partial_t\Gamma)dt&=\frac{1}{2}\int_{t_{j-1}}^{t_j}\pfrac{}{s}g(\partial_t\Gamma,\partial_t\Gamma)dt\\
+	&=\int_{t_{j-1}}^{t_j}g(D_s\partial_t\Gamma,\partial_t\Gamma)dt\\
+	&=\int_{t_{j-1}}^{t_j}g(D_t\partial_s\Gamma,\partial_t\Gamma)dt\\
+	&=\int_{t_{j-1}}^{t_j}\pfrac{}{t}g(\partial_s\Gamma,\partial_t\Gamma)dt-\int_{t_{j-1}}^{t_j}g(\partial_s\Gamma,D_t\partial_t\Gamma)dt\\
+	&=\rest{g(\partial_s\Gamma,\partial_t\Gamma)}_{(s,t_{j-1})}^{(s,t_j)}-\int_{t_{j-1}}^{t_j}g(\partial_s\Gamma,D_t\partial_t\Gamma)dt.
+\end{align*}
+Noting that $\partial_s\Gamma$ is continuous by construction from the exponential map, and summing up $1\leq j\leq k$, we see that
+\begin{align*}
+	\hat{E}'(s)&=\sum_{j=1}^k\frac{1}{2}\frac{d}{ds}\int_{t_{j-1}}^{t_j}g(\partial_t\Gamma,\partial_t\Gamma)dt\\
+	&=-\int_a^bg(\partial_s\Gamma,D_t\partial_t\Gamma)dt+\sum_{j=1}^{k-1}g(\partial_s\Gamma(s,t_j),\Delta\partial_t\Gamma(s,t_j))\\
+	&\qquad\qquad+g(\partial_s\Gamma(s,b),\partial_t\Gamma(s,b))-g(\partial_s\Gamma(s,a),\partial_t\Gamma(s,a)),
+\end{align*}
+as desired.
+\end{proof}
+
+We can now characterize the critical points of the energy (and length functional).  A curve $\gamma\in\mathcal{C}(B)$ is a \textit{critical point} of $E$ if
+$$dE_{\gamma}(V)=0,$$
+for all $V\in T_\gamma\mathcal{C}(B)$.  To this end, suppose $\gamma$ is a geodesic that satisfies
+$$(\gamma'(a),-\gamma'(b))\in T_{(\gamma(a),\gamma(b))}B^\perp,$$
+then we say $\gamma$ is a \textit{$B$-geodesic}.  Since all geodesics are smooth (by definition), we see that all $B$-geodesics are critical points for $E$.
+
+\begin{cor}[Regularity Theorem\footnote{Criticality implies smoothness.  This is a feature of Elliptic Regularity, see Chapter 11 in \cite{nicolaescu2007lectures}}]
+    $\gamma\in\mathcal{C}(B)$ is a critical point for the energy functional if and only $\gamma$ is a $B$-geodesic.
+\end{cor}
+
+\begin{proof}
+By preceding remarks, if $\gamma$ is a $B$-geodesic, it's a critical point.  Conversely, suppose $\gamma$ is a critical point.  Let $\{t_j:0\leq j\leq k\}$ be an admissible partition for $\gamma$.  Fix one such subinterval $[t_{j-1},t_j]$, and let $\phi\in C^\infty(\R)$ be a bump function with $\phi>0$ on $(t_{j-1},t_j)$ and $0$ elsewhere.  Then $\phi D_t\gamma'\in T_\gamma\mathcal{C}(B)$, and hence
+\begin{align*}
+	0&=dE_\gamma(\phi D_t\gamma')\\
+	&=-\int_{t_{j-1}}^{t_j}g(\phi D_t\gamma',D_t\gamma')dt\\
+	&=-\int_{t_{j-1}}^{t_j}\phi|D_t\gamma'|_g^2dt,
+\end{align*}
+and hence $D_t\gamma'=0$ on $(t_{j-1},t_j)$.  Since $j\in\{1,...,k\}$ was arbitrary, we see also see that
+$$D_t\gamma'(t_j^+)=0=D_t\gamma'(t_j^-).$$
+and hence $\gamma$ is a broken geodesic on $[a,b]$.
+
+Fix one $t_j$, $1\leq j\leq k-1$ and let $U$ be a coordinate chart about $\gamma(t_j)$.  Let $V$ be the constant vector field equal to $\Delta\gamma'(t_j)$ in $U$, and extend via another bump function to all $\gamma$ such that $V(t_i)=0$ for all $i\neq j$.  Again, we then see
+\begin{align*}
+	0&=dE_\gamma(V)\\
+	&=g(V(t_j),\Delta\gamma'(t_j))\\
+	&=|\Delta\gamma'(t_j)|_g^2,
+\end{align*}
+and hence $\Delta\gamma'(t_j)=0$.  Since the two one-sided velocities are equal, by the uniqueness and existence theorem for geodesics, we see all the segments are extensions of each other and hence $\gamma$ is smooth, and thus a geodesic.
+
+Finally, for any $(X,Y)\in T_{(\gamma(a),\gamma(b))}B$, let $V\in T_\gamma\mathcal{C}(B)$ be such that $V(a)=X$ and $V(b)=Y$.  Then
+\begin{align*}
+	0&=dE_\gamma(V)\\
+	&=g(V(b),\gamma'(b))-g(V(a),\gamma'(a))\\
+	&=g(Y,\gamma'(b))-g(X,\gamma'(a))\\
+	&=-(g\times g)((X,Y),(\gamma'(a),-\gamma'(b)),
+\end{align*}
+concluding the proof.
+\end{proof}
+
+Moreover, we note that if $\gamma\in\mathcal{C}(B)$ is parametrized to have constant speed $c=|\gamma'(t)|_g$, and let $\Gamma$ be a variation of $\gamma$.  Then
+$$\rest{\pfrac{}{s}}_{s=0}\sqrt{g(\partial_t\Gamma(s,t),\partial_t\Gamma(s,t))}=\frac{1}{2c}\rest{\pfrac{}{s}}_{s=0}g(\partial_t\Gamma(s,t),\partial_t\Gamma(s,t)).$$
+
+Thus for any $V\in T_\gamma\mathcal{C}(B)$, we have that
+$$dL_\gamma(V)=\frac{1}{c}dE_\gamma(V).$$
+
+Since any curve $\gamma\in\mathcal{C}(B)$ can be reparametrized to have constant speed, we see that the critical points of the length functional are ``essentially'' the same as the critical points for the energy functional.
+
+We call a curve $\gamma$, a \textit{pregeodesic} if there is a parametrization $\phi:[a,b]\to[a,b]$ such that $\gamma\circ\phi$ is a geodesic.
+
+\begin{cor}
+    $\gamma\in\mathcal{C}(B)$ is a critical points for the length functional if and only if $\gamma$ is a pregeodesic.
+\end{cor}
+
+
+
+\subsection{The Second Variation}
+
+Suppose $M$ is a smooth manifold and $f\in C^\infty(M)$ and $p$ is a critical point of $f$, that is, $df_p=0$.  Define the bilinear form $\hess(f)_p:T_pM\times T_pM\to\R$ as follows.  Given $X,Y\in T_pM$, and consider a map $(s_1,s_2)\mapsto \alpha(s_1,s_2)$ such that $\alpha(0,0)=p$, and
+$$\pfrac{\alpha}{s_1}(0,0)=X,\qquad\pfrac{\alpha}{s_2}(0,0)=Y.$$
+Then define
+$$\hess(f)_p(X,Y)=\frac{\partial^2(f\circ\alpha)}{\partial s_1\partial s_2}(0,0).$$
+Since $p$ is critical for $f$, we will see that $\hess(f)_p$ is independent of map $\alpha$ and symmetric.
+
+Alternatively, if $(M,g)$ is a semi-Riemannian manifold with Levi-Civita connection $\nabla$, then we can define symmetric bilinear from as
+$$\hess(f)(X,Y)=\nabla^2f(X,Y)=Y[X[f]]-(\nabla_YX)[f].$$
+In particular if $p$ is a critical point for $f$, then 
+$$\hess(f)_p(X,Y)=Y_p[X[f]].$$
+
+\begin{lem}
+    The two definitions for $\hess(f)_p$ for a critical point $p$ are equivalent.
+\end{lem}
+
+\begin{proof}
+Suppose $p\in M$ is a critical point for $f$.  Let $X,Y\in T_pM$, and $(U,(x^j))$ be a coordinate neighborhood about $p$, and suppose $\alpha:I_\epsilon^2\to U$ is a smooth map such that $\alpha(0,0)=p$, $\pfrac{\alpha}{s_1}(0,0)=X,$ and $\pfrac{\alpha}{s_2}(0,0)=Y$.  Extend $Y$ to any smooth vector field $Y^j\pfrac{}{x^j}$ about $p$, and consider
+\begin{align*}
+	X_p[Y[f]]&=X_p\left[Y^j\pfrac{f}{x^j}\right]\\
+	&=X^i(p)\rest{\pfrac{}{x^i}}_p\left[Y^j\pfrac{f}{x^j}\right]\\
+	&=X^i(p)\pfrac{Y^j}{x^i}(p)\pfrac{f}{x^j}(p)+X^i(p)Y^j(p)\frac{\partial^2f}{\partial x^i\partial x^j}(p)\\
+	&=X^i(p)Y^j(p)\frac{\partial^2f}{\partial x^i\partial x^j}(p)&\text{since $df_p=0$.}
+\end{align*}
+Conversely, we now consider
+\begin{align*}
+	\partial_1\partial_2(f\circ\alpha)(0,0)&=\rest{\partial_1}_{(0,0)}(\partial_2(f\circ\alpha))\\
+	&=\rest{\partial_1}_{0,0)}\left(\pfrac{f}{x^j}(\alpha(s_1,s_2))\pfrac{\alpha}{s_2}(s_1,s_2)\right)\\
+	&=\frac{\partial^2f}{\partial x^2\partial x^j}(p)\pfrac{\alpha^i}{s_1}(0,0)\pfrac{\alpha}{s_2}(0,0)+\pfrac{f}{x^j}(p)\frac{\partial^2\alpha^j}{\partial s_1\partial s_2}(0,0)\\
+	&=\frac{\partial^2f}{\partial x^i\partial x^j}(p)X^i(p)Y^j(p),
+\end{align*}
+again sine $df_p=0$.  Thus showing the two expressions are equal.
+\end{proof}
+
+Using the Levi-Civita definition for the Hessian, it's clear that $\hess(f)_p)$ is a bilinear and symmetric, and independent of of map $\alpha$.  However, in practice, using such a map $\alpha$ is what allows us compute our second variation of energy.
+
+
+Returning to our setup of $(M,g)$ being a complete Riemannian manifold with boundary condition $B$, let $\gamma\in\mathcal{C}(B)$ and $V,W\in T_\gamma\mathcal{C}(B)$.  Then we construct a two-parameter variation $\Gamma:I_\epsilon\times I_\epsilon\times[a,b]\to M$ by
+$$\Gamma(s_1,s_2,t)=\exp_{\gamma(t)}(s_1V+s_2W),$$
+and have $\partial_{s_1}\Gamma(0,0,t)=V(t)$, $\partial_{s_2}\Gamma(0,0,t)=W(t)$, and $\Gamma(0,0,t)=\gamma(t)$.
+
+We now consider the Hessian of our energy functional.  To this end, let $\gamma\in\mathcal{C}(B)$ be a $B$-geodesic, which is a critical point for $E$.  Let $V,W\in T_\gamma\mathcal{C}(B)$ with associated two-parameter variation $\Gamma$.  Then
+$$\hess(E)_\gamma(V,W)=\frac{\partial^2\hat{E}}{\partial s_1\partial s_2}(0,0).$$
+
+\begin{thm}[Second Variation of Energy]\label{thm:secondVarEnergy}
+	Let $\gamma\in\mathcal{C}(B)$ be a $B$-geodesic and $V,W\in T_\gamma\mathcal{C}(B)$ with associated two-parameter variation $\Gamma:I_\epsilon\times I_\epsilon\times[a,b]\to M$.  If $\{t_j:0\leq j\leq k\}$ is an admissible partition for $\Gamma$, then
+	\begin{nalign}\label{eq:indexForm}
+		\hess(E)_\gamma(V,W)&=\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt\\
+		&\qquad +(g\times g)(S_{\gamma'(a),-\gamma'(b)}(V(a),V(b)),(W(a),W(b))),
+	\end{nalign}
+	or alternatively,
+	\begin{nalign}\label{eq:jacobiForm}
+		&\hess(E)_\gamma(V,W)=-\int_a^b(g(D_t^2V+R_{V\gamma'}\gamma',W)dt\\
+		&\qquad +(g\times g)(S_{(\gamma'(a),-\gamma'(b))}(V(a),V(b))+(-D_tV(a),D_tV(b)),(W(a),W(b)))\\
+		&\qquad\qquad +\sum_{j=1}^{k-1}g(\Delta(D_tV)(t_j),W(t_j)),
+	\end{nalign}
+	where $S$ denotes the shape operator of the submanifold $B\subset M\times M$ with respect to the normal vector $(\gamma'(a),-\gamma'(b))$, that is, given a normal vector $\xi\in T_xB^\perp$ and vectors $X,Y\in T_xB$, we have that
+	$$(g\times g)(S_\xi(X),Y)=-(g\times g)(\two(X,Y),\xi).$$
+\end{thm}
+
+\begin{proof}
+For notational convenience, let $T=\partial_t\Gamma$, $Z_1=\partial_{s_1}\Gamma$, and $Z_2=\partial_{s_2}\Gamma$; and let $D_1=D_{s_1}$ and $D_2=D_{s_2}$ denote the covariant derivatives in the $s_1$ and $s_2$ directions.  Let $\{t_0,...,t_k\}$ denote an admissible partition for $\Gamma$.  Let $\hat{E}_j$ denote the restriction to interval $[t_{j-1},t_j]$ on which all maps and vector fields are smooth.
+
+Then by our first variation formula \cref{thm:firstVarEnergy}, we have that
+$$\pfrac{\hat{E}_j}{s_2}(s_1,s_2)=\rest{g(Z_2,T)}_{t_{j-1}}^{t_j}-\int_{t_{j-1}}^{t_j} g(Z_2,D_tT)dt.$$
+Then
+\begin{align*}
+	\frac{\partial^2\hat{E}_j}{\partial s_1\partial s_2}(s_1,s_2)&=\pfrac{}{s_1}\rest{g(Z_2,T)}_{t_{j-1}}^{t_j}-\int_{t_{j-1}}^{t_j}\pfrac{}{s_1}g(Z_2,D_tT)dt\\
+	&=\rest{g(D_1Z_2,T)}_{t_j-1}^{t_j}+\rest{g(Z_2,D_1T)}_{t_j-1}^{t_j}\\
+	&\qquad -\int_{t_{j-1}}^{t_j}(g(D_1Z_2,D_tT)+g(Z_2,D_1D_tT))dt\\
+	&=\rest{g(D_1Z_2,T)}_{t_j-1}^{t_j}+\rest{g(Z_2,D_tZ_1)}_{t_j-1}^{t_j}\\
+	&\qquad -\int_{t_{j-1}}^{t_j}*+g(D_tD_tZ_1+R_{Z_1T}T,Z_2)dt\\
+	&=\rest{g(D_1Z_2,T)}_{t_j-1}^{t_j}+\rest{g(Z_2,D_tZ_1)}_{t_j-1}^{t_j}-\rest{g(D_tZ_1,Z_2)}_{t_{j-1}}^{t_j}\\
+	&\qquad+\int_{t_{j-1}}^{t_j}(-*)-g(D_tZ_1,D_tZ_2)+g(R_{Z_1T}T,Z_2)dt\\
+	&=\rest{g(D_1Z_2,T)}_{t_j-1}^{t_j}+0\\
+	&\qquad+\int_{t_{j-1}}^{t_j}(-*)+g(D_tZ_1,D_tZ_2)-g(R_{Z_1T}T,Z_2)dt.
+\end{align*}
+Notice that since $D_1Z_2=D_{\partial_{s_1}}\partial_{s_2}\Gamma$ is smooth away from the plane $t=t_j$, and only depends on the values of $\Gamma$ when $t=t_j$, it follows $D_1Z_2$ is continuous, and that $\Delta D_1Z_2(t_j)=0$ for $1\leq j\leq k-1$.  Summing from $j=1$ to $j-k$, we see that
+\begin{align*}
+	\frac{\partial^2\hat{E}}{\partial s_1\partial s_2}(s_1&,s_2)=\rest{g(D_1Z_2,T)}_{(s_1,s_2,a)}^{(s_1,s_2,b)}\\
+	&+\int_a^b(g(D_tZ_1,D_tZ_2)-g(R_{Z_1T}T,Z_2))dt-\int_a^bg(D_1Z_2,D_tT)dt.
+\end{align*}
+Evaluating at $(s_1,s_2)=(0,0)$, we get that
+\begin{align*}
+	\hess(E)_\gamma(V,W)&=g(D_1W(b),\gamma'(b))-g(D_1W(a),\gamma'(a))\\
+	&\qquad +\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt\\
+	&=+(g\times g)(S_{\gamma'(a),-\gamma'(b)}(V(a),V(b)),(W(a),W(b)))\\
+	&\qquad +\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt.
+\end{align*}
+
+Moreover, noting that
+\begin{align*}
+	\int_a^bg(D_tV,D_tW)dt&=\int_a^b\left(\pfrac{}{t}g(D_tV,W)-g(D_t^2V,W)\right)dt\\
+	&=-\int_a^bg(D_t^2,W)dt+\sum_{j=1}^{k-1}g(\Delta D_tV(t_j),W(t_j))\\
+	&\qquad +(g\times g)((D_tV(b),D_tV(a)),(W(a),W(b))),
+\end{align*}
+we get that
+\begin{align*}
+		&\hess(E)_\gamma(V,W)=-\int_a^b(g(D_t^2V+R_{V\gamma'}\gamma',W)dt\\
+		&\qquad +(g\times g)(S_{(\gamma'(a),-\gamma'(b))}(V(a),V(b))+(-D_tV(a),D_tV(b)),(W(a),W(b)))\\
+		&\qquad\qquad +\sum_{j=1}^{k-1}g(\Delta(D_tV)(t_j),W(t_j)),
+\end{align*}
+completing the proof.
+\end{proof}
+
+We remark that when $\hess(E)_\gamma$, when expressed in the form of \cref{eq:indexForm} is clearly symmetric and bilinear.  Moreover, if $\gamma$ is minimizing for all nearby variations, then $\hess(E)_\gamma$ is positive semi-definite.
+
+Moreover, depending on certain structures the boundary condition $B\subset M\times M$ posses, we can simplify the expression.
+
+\begin{cor}
+    Suppose $\gamma\in\mathcal{C}(N)$ is a $B$-geodesic and $V,W\in T_\gamma\mathcal{C}(B)$.
+    \begin{enumerate}[i.]
+    	\item If $B$ is totally geodesic (i.e., $\two\equiv0$), for example if $B=\{(p,q)\}$, or if $B=\Delta(M)$, the diagonal of $M\times M$, then
+    	$$\hess{E}_\gamma(V,W)=\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt.$$	
+    	\item If $A_1, A_2\subseteq M$ are immersed submanifolds of $M$ with respective shape operators $S^1, S^2$, and $B=A_1\times A_2$, then
+    	\begin{align*}
+    		\hess(E)_\gamma(V,W)&=\int_a^b(g(D_tV,D_tW)-g(R_{V\gamma'}\gamma',W))dt\\
+    		&\qquad +g(S^1_{\gamma'(a)}(V(a)),W(a))-g(S^2_{\gamma'(b)}(V(b)),W(b))
+    	\end{align*}
+    \end{enumerate}
+
+\end{cor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

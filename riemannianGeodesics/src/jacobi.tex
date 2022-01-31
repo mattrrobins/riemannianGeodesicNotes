@@ -1,0 +1,217 @@
+
+
+
+\section{Jacobi Fields}
+
+\begin{tcolorbox}
+This sections follows largely from \cite{lee2006riemannian} and \cite{sakai1996riemannian}.  For Jacobi fields of a distance function and the Riccati equation see \cite{meyer1989toponogov} and the Sphere Theorem with \cite{safeer2016study}.
+\end{tcolorbox}
+
+
+Let $(M,g)$ be a connected Riemannian manifold.  If $\gamma$ is any geodesic on $M$, then a smooth vector field $J\in\vf{\gamma}$ is called a \textit{Jacobi field} if $J$ satisfies the \textit{Jacobi equation}
+$$D_t^2J+R_{J\gamma'}\gamma'=0.$$
+
+
+\begin{thm}
+Let $\gamma:[0,b]\to M$ be a geodesic segment in $M$.  Then $J$ is a Jacobi field along $\gamma$ if and only if $J$ is a variation field through geodesics.
+\end{thm}
+
+\begin{proof}
+Suppose $J(t)=\partial_s\Gamma(0,t)$ is the variation field for the geodesic variation $\Gamma$.  Then
+$$D_t\partial_t\Gamma(s,t)=0,$$
+and hence by \cref{thm:symmetryLemma} and \cref{thm:curvatureLemma},
+
+\begin{align*}
+	0&=D_sD_t\partial_t\Gamma\\
+	&=D_tD_s\partial_t\Gamma+R_{\partial_s\Gamma\partial_t\Gamma}\partial_t\Gamma\\
+	&=D_tD_t\partial_s\Gamma+R_{\partial_s\Gamma\partial_t\Gamma}\partial_t\Gamma.
+\end{align*}
+Evaluating at $s=0$, we then see that
+$$0=D_t^2J+R_{J\gamma'}\gamma',$$
+showing that $J$ is a Jacobi field.
+
+Conversely, suppose $J(t)$ is a Jacobi field along $\gamma$.  Let $x=\gamma(0)$ and $\xi=\gamma'(0)$, and choose any smooth curve $\sigma:I_\epsilon\to M$ and smooth vector field $V$ along $\sigma$ such that
+$$\sigma(0)=x,\qquad \sigma'(0)=J(0);$$
+$$V(0)=\xi,\qquad D_sV(0)=D_tJ(0).$$
+Since the domain of the exponential map is an open subset of $TM$ that contains the compact set $\{(x,t\xi):0\leq t\leq b\}$, there exists $0<\delta<\epsilon$ for which the function
+$$\Gamma(s,t)=\exp_{\sigma(s)}(tV(s)),$$
+is well-defined for all $(s,t)\in(-\delta,\delta)\times[0,b]$.  Moreover, by the uniqueness of geodesics, we have that
+$$\Gamma(0,t)=\exp_x(t\xi)=\gamma(t),$$
+showing that $\Gamma(s,t)$ is variation of $\gamma$. and similarly is a geodesic variation.  
+
+Let $W(t)$ denote this variation field.  The first part of this proof showed that $W$ is a Jacobi field along $\gamma$.  First note that since $\Gamma(s,0)=\sigma(s)$,
+$$W(0)=\partial_s\Gamma(0,t)=\sigma'(0)=J(0).$$
+Moreover, we have that
+$$\partial_t\Gamma(s,0)=d(\exp_{\sigma(s)})_0(V(s))=V(s),$$
+and hence
+$$D_tW(0)=D_t\partial_s\Gamma(0,0)=D_s\partial_t\Gamma(0,0)=D_sV(0)=D_tJ(0),$$
+thus showing $W\equiv J$ by the uniqueness of Jacobi fields.
+
+\end{proof}
+
+Let $\mathfrak{J}(\gamma)$ denote the space of Jacobi fields along $\gamma$.  Since the Jacobi equation is equivalent to a linear system of $2n$ first order, ordinary differential equations, we see that from the existence and uniqueness theorem for Jacobi fields that $\dim{\mathfrak{J}}(\gamma)=2n$ as a linear subspace of $\mathfrak{X}(\gamma)$, with a bijection $\mathfrak{J}\to T_{\gamma(t_0)}M\oplus T_{\gamma(t_0)}M$, $J\mapsto (J(t_0), D_tJ(t_0))$.
+
+Note that since tangential Jacobi fields are completely characterized by $J(t)=(a+tb)\gamma'(t)$, which correspond to the initial value problem
+$$D_t^2J+R_{J\gamma'}\gamma'=0,\qquad J(0)=a\gamma'(0), D_tJ(0)=b\gamma'(0),$$
+we see that $J(t)$ is a \textit{normal Jacobi field} (i.e., $J(t)\perp\gamma'(t)$ for all $t$) if both $J$ and $D_tJ$ are orthogonal to $\gamma'$ at one point, or if $J$ is orthogonal to $\gamma'$ at two distinct points.  Thus the space of normal Jacobi fields along $\gamma$ is a $(2n-2)$-dimensional subspace of $\mathfrak{J}(\gamma)$.
+
+We say that a point $y=\gamma_{x,\xi}(t)$ is a \textit{conjugate point at $x$ in the direction $\xi$} if 
+$$d(\exp_x)_{t\xi}:T_{t\xi}T_xM\to T_yM$$
+is degenerate.
+
+\begin{lem}[Proposition 10.10 in \cite{lee2006riemannian}]\label{thm:conjugateJacobi}
+    If $\xi\in T_xM$ and $y=\gamma_{x,\xi}(1)$ is a conjugate point along $\gamma_{x,\xi}$ if and only if there exists a nontrivial Jacobi field $J(t)$ along $\gamma_{x,\xi}([0,1])$ with the Dirichlet boundary conditions $J(0)=J(1)=0$.
+\end{lem}
+
+\begin{proof}
+Suppose $\xi$ is critical for $\exp_x$, then there exists $\eta\in T_xM$ such that $d(\exp_x)_\xi(\eta)=0$.  Define the variation
+$$\Gamma_\eta(s,t)=\exp_x(t(\xi+s\eta)).$$
+This is clearly a variation of geodesics, and let
+$$J(t)=\partial_s\Gamma_\eta(0,t).$$
+Then $J$ is a Jacobi field with $J(0)=0$.  Moreover,
+\begin{align*}
+	J(1)&=\pfrac{\Gamma_\eta}{s}(0,1)\\
+	&=\rest{\pfrac{}{s}}_{s=0}\exp_x(\xi+s\eta)\\
+	&=d(\exp_x)_\xi(\eta)\\
+	&=0.
+\end{align*}
+Conversely, suppose $J(t)$ is a nontrivial Jacobi field along $\gamma_{x,\xi}(t)$ with $J(0)=J(1)=0$.  Let $\eta=D_tJ(0)\in T_xM$.  Note that if $\eta=0$, then $J(t)=\gamma_{x,\xi}'(t)$, and so $0=J(0)=\xi$, and our Jacobi field would be trivial.  Thus $\eta\neq0$ and defining a variation $\Gamma_\eta(s,t)$ as above, we then see that $J(t)=\partial_s\Gamma_\eta(0,t)$, and hence
+$$d(\exp_x)_\xi(\eta)=J(1)=0,$$
+thus showing that $\xi$ is a critical point for $\exp_x$ and thus $y$ is conjugate along $\gamma_{x,\xi}$.
+\end{proof}
+
+In the above, the dimension of the space of all Jacobi fields vanishing at $x$ and $y$ along $\gamma_{x,\xi}$ is called the \textit{multiplicity} of the conjugate point $y$.  That is,
+$$\text{multiplicity}=\dim\left(\ker{d(\exp_x)_{\xi}}\right).$$
+In particular, at conjugate points, the Jacobi fields are \textit{not} unique.
+
+From the existence and uniqueness theorem, there is an $n$-dimensional subspace of $\mathfrak{J}(\gamma)$ which vanish at $0$.  Since tangential Jacobi fields can vanish at most one points, we see that the multiplicity of a conjugate points can be at most $n-1$.
+
+It's important to note that conjugate points are precisely the obstruction to the uniqueness of the Jacobi equation under the Dirichlet boundary conditions.  
+
+\begin{cor}
+    If $y=\gamma_{x,\xi}(t_0)$ is not conjugate, then for any $\eta\in T_xM$, $\zeta\in T_yM$, there exists a unique $J\in\mathfrak{J}(\gamma)$ such that
+    $$J(0)=\eta,\qquad J(t_0)=\zeta.$$
+\end{cor}
+
+\begin{proof}
+Follows immediately, since $d(\exp_x)_{t_0\xi}$ is bijective, and
+$$J(t)=d(\exp_x)_{t\xi}(tD_tJ(0)).$$
+\end{proof}
+
+\begin{thm}[Regularity Theorem]
+    Let $(M,g)$ be a complete Riemannian manifold with boundary condition $B$.  Suppose $\gamma\in\mathcal{C}(B)$ is a $B$-geodesic, and let $V\in T_\gamma\mathcal{C}(B)$.  Then $V$ is in the null space of $\hess(E)_\gamma$ if and only if $V$ is a Jacobi field and satisfies the boundary condition
+\begin{equation}\label{eq:jacobiBC}
+(-D_tV(a),D_tV(b))+S_{(\gamma'(a),-\gamma'(b))}(V(a),V(b))\in T_{(\gamma(a),\gamma(b))}B^\perp.
+\end{equation}
+\end{thm}
+
+\begin{proof}
+Suppose $V$ is Jacobi field satisfying the boundary condition, then using the alternative form \cref{eq:jacobiForm} for $\hess(E)_\gamma$, we see immediately that $\hess(E)_\gamma(V,W)=0$ for all $W\in T_\gamma\mathcal{C}(p,q)$.
+
+Conversely, suppose $\hess(E)_\gamma(V,W)=0$ for all $W\in T_\gamma\mathcal{C}(p,q)$.  Let $\{t_j:0\leq j\leq k\}$ be an admissible partition for $V$.  Fix one such subinterval $[t_{j-1},t_j]$ and let $\phi\in C^\infty(R)$ be a bump function with $\phi>0$ on $(t_{j-1},t_j)$ and $0$ elsewhere.  Define the vector field
+$$W=\phi(D_t^2V+R_{V,\gamma'}\gamma',$$
+which is in $T_\gamma\mathcal{C}(B)$.  Moreover,
+\begin{align*}
+	0&=\hess_\gamma(V,W)\\
+	&=-\int_{t_{j-1}}^{t_j}\phi|D_t^2V+R_{V\gamma'}\gamma'|_g^2dt,
+\end{align*}
+and since $\phi>0$, we conclude that
+$$D_t^2V+R_{V\gamma'}\gamma'=0,$$
+on $(t_{j-1},t_j)$.  Since $j\in\{1,...,k\}$ was arbitrary, we have that
+$$D_t^2V(t_j^-)=-R_{V(t_j)\gamma'(t_j)}\gamma'(t_j)=D_t^2V(t_j^+),$$
+for $j=1,..,k-1$, and hence $J$ is a broken Jacobi field on $[a,b]$.
+
+Next choose $W\in T_\gamma\mathcal{C}(B)$ so that $W(a)=W(b)=0$ and for each $j=1,...,k-1$, $W$ satisfies
+$$W(t_j)=\Delta D_tV(t_j).$$
+Then
+\begin{align*}
+	0&=\hess(E)_\gamma(V,W)\\
+	&=\sum_{j=1}^{k-1}|\Delta D_tV(t_j)|_g^2,
+\end{align*}
+and hence $\Delta D_tV(t_j)=0$ for each $1\leq j\leq k-1$, thus showing that $V$ is a Jacobi field.
+
+Finally for any $(X,Y)\in T_{(\gamma(a),\gamma(b))}B$, let $W\in T_\gamma\mathcal{C}(B)$ which satisfies
+$$W(a)=X,\qquad W(b)=Y,$$
+then
+\begin{align*}
+	0&=\hess(E)_\gamma(V,W)\\
+	&=(g\times g)(S_{\gamma'(a),-\gamma'(b)}(V(a,V(b))+(-D_tV(a),D_tV(B)),(X,Y)),
+\end{align*}
+thus showing the desired boundary condition and concluding the proof.
+
+
+
+\end{proof}
+
+\begin{lem}[Global Gauss Lemma]\label{thm:gaussLemma}
+    Let $x\in M$, $\xi,\eta\in T_pM$ and let $\gamma(t)=\exp_x(t\xi)$.  Then for any $t$ in the domain,
+    $$g_{\gamma(t)}(d(\exp_x)_{t\xi}(\xi),d(\exp_x)_{t\xi}(\eta))=g_x(\xi,\eta).$$
+\end{lem}
+
+\begin{proof}
+Note that the above equality is trivially true for $t=0$, so we assume $t>0$. Let $J$ be the Jacobi field along $\gamma$ with $J(0)=0, D_tJ(0)=\eta$.  Then
+$$\gamma'(t)=d(\exp_x)_{t\xi}(\xi)$$
+and
+$$\frac{1}{t}J(t)=d(\exp_x)_{t\xi}(\eta).$$
+Decompose $\eta=\lambda\xi+\eta_1$, where $\eta_1\perp\xi$.  Now, let $J_0, J_1$ be the Jacobi fields along $\gamma$ that vanish at $x$ satisfying
+$$D_tJ_0(0)=\lambda\xi,\qquad D_tJ_1(0)=\eta_1.$$
+Note that $J_0(0)=\lambda t\gamma'(t)$ for all $t$, $J_1$ is a normal Jacobi field, and so
+$$J(t)=\lambda t\gamma'(t)+J_1(t).$$
+Hence
+\begin{align*}
+	g_{\gamma(t)}(d(\exp_x)_{t\xi}(\xi),d(\exp_x)_{t\xi}(\eta))&=g_{\gamma(t)}\left(\gamma'(t),\frac{1}{t}J(t)\right)\\
+	&=\lambda g_{\gamma(t)}(\gamma'(t),\gamma'(t))+\frac{1}{t}g_{\gamma(t)}(\gamma'(t),J_1(t))\\
+	&=\lambda g_x(\xi,\xi)\\
+	&=g_x(\xi,\lambda\xi)\\
+	&=g_x(\xi,\eta).
+\end{align*}
+\end{proof}
+
+Note that the usual Gauss lemma is just an application of the above with $t=1$.
+
+\begin{prop}\label{thm:paramProp}
+    Let $x\in M$, $\xi\in T_xM$ and $\phi:[0,1]\to T_xM$ be any arbitrary piecewise smooth curve joining $0$ to $\xi$.  Let $\gamma(t)=\exp_x(t\xi)$ and $\tilde{\gamma}(t)=\exp_x(\phi(t))$.  Then
+    $$L_g(\tilde{\gamma})\geq L_g(\gamma)=|\xi|_g.$$
+    Moreover, if $\exp_x$ is nonsingular on the line $[0,1]\xi$, then
+    $$L_g(\tilde{\gamma})>L_g(\gamma),$$
+    unless $\gamma$ is a reparametrization of $\tilde{\gamma}$.
+\end{prop}
+
+\begin{proof}
+Without loss of generality, assume $\phi(t)\neq0$ for all $t\in(0,1]$.  For $t\in(0,1]$, write $\phi(t)=r(t)u(t)$, where $r:(0,1]\to(0,\infty)$ and $u:(0,1]\to S_xM$ are smooth.  Then
+$$\phi'(t)=r'(t)u(t)+r(t)u'(t),\qquad u(t)\perp u'(t).$$
+Furthermore, we see
+\begin{align*}
+	|\tilde{\gamma}'(t)|_g^2&=|(\exp_x\circ\phi)'(t)|_g^2\\
+	&=|d(\exp_x)_{\phi(t)}(\phi'(t))|_g^2\\
+	&=|r'(t)|^2|d(\exp_x)_{\phi(t)}(u(t))|_g^2\\
+	&\qquad+2r'(t)r(t)g(d(\exp_x)_{\phi(t)}(u(t)),d(\exp_x)_{\phi(t)}(u'(t)))\\
+	&\qquad\qquad\quad+|d(\exp_x)_{\phi(t)}(r(t)u'(t))|_g^2\\
+	&=|r'(t)|^2|u(t)|_g^2+2r'(t)r(t)g_x(u(t),u'(t))\qquad\text{by \cref{thm:gaussLemma}}\\
+	&\qquad\qquad+|d(\exp_x)_{\phi(t)}(r(t)u'(t))|_g^2\\
+	&=|r'(t)|^2+0+|d(\exp_x)_{\phi(t)}(r(t)u'(t))|_g^2\\
+	&\geq|r'(t)|^2.
+\end{align*}
+Hence
+\begin{align*}
+	L_g(\tilde{\gamma})&=\int_0^1|\tilde{\gamma}'(t)|_gdt\\
+	&\geq\int_0^1|r'(t)|dt\\
+	&\geq\left|r(1)-\lim_{t\to0^+}r(t)\right|\\
+	&=|r(1)|\\
+	&=|\phi(1)|_g\\
+	&=|\xi|_g\\
+	&=L_g(\gamma).
+\end{align*}
+
+Moreover, if $\exp_x$ is nonsingular on $[0,1]\xi$, then there is some $\epsilon>0$ neighborhood of $[0,1]\xi$ in $T_xM$ for which $\exp_x$ is nonsingular.  Suppose $L_g(\gamma)=L_g(\tilde{\gamma})$, then $|\tilde{\gamma}'(t)|_g=|r'(t)|$ for all $t$, and so
+$$d(\exp_x)_{\phi(t)}(u'(t))=0,$$
+for all $t$.  Since $\exp_x$ is nonsingular near $[0,1]\xi$, we have that $u'(t)=0$ whenever $\phi$ is $\epsilon$-close to $[0,1]\xi$, and hence $u(t)$ is constant there.  As $\phi(t)$ starts in such a neighborhood, and ends in such a neighborhood, it must stay in the neighborhood, thus showing $u(t)=u_0$ for all $t\in[0,1]$.
+
+Thus $\phi(t)=r(t)u_0$, where $u_0=\frac{\xi}{|\xi|_g}$.  Moreover, since $r'(t)$ cannot change sign, we have that
+$$\tilde{\gamma}(t)=\exp_x\left(\frac{r(t)}{|\xi|_g}\xi\right),$$
+is just a reparametrization of $\gamma$.
+\end{proof}
+
+
+
+
